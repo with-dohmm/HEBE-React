@@ -1,0 +1,169 @@
+#header {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  padding: 0 4.5%;
+  margin-bottom: 25px;
+  height: 90px;
+  background-color: #ffffff;
+  box-shadow: 4px 4px 10px rgb(211, 211, 211);
+  font-family: 'GmarketSansBold';
+}
+#logo {
+  height: 40px;
+  width: 60px;
+  margin: 25px 0;
+  font-size: 20px;
+  line-height: 45px;
+  background: #867ec7;
+  background: -webkit-linear-gradient(left, #867ec7, #d57272);
+  background:    -moz-linear-gradient(right, #867ec7, #d57272);
+  background:      -o-linear-gradient(right, #867ec7, #d57272);
+  background:         linear-gradient(to right, #867ec7, #d57272);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  cursor: pointer;
+}
+#header_center {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  line-height: 89px;
+}
+#header_center > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 500px;
+  height: 89px;
+}
+#header_center span {
+  position: relative;
+}
+#header_center span::after {
+  content: ""; 
+  position: absolute; 
+  bottom: -1px; left: 50%; 
+  transform: translateX(-50%); 
+  width: 0; height: 2px; 
+  background: #867ec7;
+  background: -webkit-linear-gradient(left, #867ec7, #d57272);
+  background:    -moz-linear-gradient(right, #867ec7, #d57272);
+  background:      -o-linear-gradient(right, #867ec7, #d57272);
+  background:         linear-gradient(to right, #867ec7, #d57272);
+  transition: all .2s ease-out;
+}
+#header_center span:hover::after {
+  width: 100%;
+}
+#header_center a {
+  display: inline-block;
+  position: relative;
+  top: 2px;
+  height: 100%;
+  color: #acacad;
+  font-family: 'GmarketSansMedium';
+  font-weight: 600;
+}
+#header_center a:hover {
+  color: #6e6d74;
+}
+#header_right > * {
+  float: right;
+  position: relative;
+  top: 26px;
+}
+#header_right > span {
+  display: inline-block;
+  width: 80px;
+}
+#logoutBtn {
+  height: 40px;
+  line-height: 40px;
+  margin: 0 0.5vw;
+}
+#logoutBtn > a {
+  color: #acacad;
+  font-family: 'GmarketSansMedium';
+  font-weight: 600;
+}
+#myPageBtn {
+  padding: 5px 20px 3px 20px;
+  border-radius: 30px;
+  background: -webkit-linear-gradient(left, #867ec7, #d57272);
+  background:    -moz-linear-gradient(right, #867ec7, #d57272);
+  background:      -o-linear-gradient(right, #867ec7, #d57272);
+  background:         linear-gradient(to right, #867ec7, #d57272);
+  line-height: 30px;
+  text-align: center;
+}
+#myPageBtn > a {
+  color: white;
+  font-family: 'GmarketSansMedium';
+  font-size: 15px;
+  font-weight: 600;
+}
+#header_right > i {
+  top: 38px;
+  margin-right: 15px;
+  color: #acacad;
+  cursor: pointer;
+}
+#right_dot {
+  display: none;
+}
+#right_dot > i {
+  position: relative;
+  top: 35px;
+  float: right;
+  font-size: 20px;
+  color: #acacad;
+  cursor: pointer;
+}
+#mobileMenu {
+  display: none;
+}
+#mobileMenu > i {
+  position: relative;
+  top: 35px;
+  font-size: 20px;
+  color: #acacad;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1350px) {
+  #header {
+    grid-template-columns: auto 614px 307px;
+  }
+}
+@media only screen and (max-width: 1150px) {
+  #header {
+    grid-template-columns: auto 614px auto;
+  }
+}
+@media only screen and (max-width: 1025px) {
+  #header {
+    grid-template-columns: 1fr 614px 1fr;
+  }
+  #header_right {
+    display: none;
+  }
+  #right_dot {
+    display: inline-block;
+  }
+}
+@media only screen and (max-width: 800px) {
+  #header {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  #header_center {
+    display: none;
+  }
+  #logo {
+    justify-self: center;
+  }
+  #mobileMenu {
+    display: inline-block;
+  }
+}
+
+ 
