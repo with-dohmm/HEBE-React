@@ -1,13 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
-import Main from './components/Main/Main';
-import Frame from './components/ToDo/Frame';
 import Header from './components/Common/Header';
+import Main from './components/Main/Main';
+import Diary from './components/Diary/Diary';
+import Frame from './components/ToDo/Frame';
 
 const App = () => {
   return (
     <BrowserRouter>
-      <div>
+      <div className="app">
         <Header />
         <Switch>
           <Route path={"/"} exact={true}>
@@ -15,6 +16,9 @@ const App = () => {
           </Route>
           <Route path={"/todo"} exact={true}>
             <Frame />
+          </Route>
+          <Route path={"/diary"} exact={true}>
+            <Diary />
           </Route>
         </Switch>
       </div>
