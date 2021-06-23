@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Item from './Item';
-import apiAxios from '../Common/apiAxios';
+const apiAxios = require('../Common/apiAxios.js');
 
 const Frame = () => {
   const [list, setList] = useState([]);
@@ -34,7 +34,7 @@ const Frame = () => {
   )
 
   useEffect(() => {
-    apiAxios('/todo', getList);
+    apiAxios.main('/todo', getList);
   }, []);
 
   return (

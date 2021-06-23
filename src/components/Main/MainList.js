@@ -1,15 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import MainCard from './MainCard';
+import apiAxios from '../Common/apiAxios';
 import '../../css/Main/Main.css';
-const apiAxios = require('../Common/apiAxios.js');
 
 const Main = () => {
   const [popularOrRecent, setPopularOrRecent] = useState(0);
   const [data, setData] = useState([]);
   const [list, setList] = useState([]);
+  const [items, setItems] = useState(20);
+  const [preItems, setPreItems] = useState(0);
 
   const getData = (data) => {
     setData(data);
+  }
+
+  const listSlice = () => {
+    const temp = data.slice(preItems, items);
+    setList([...list, ...temp]);
+  }
+
+  const infiniteScroll = () => {
+    let scrollHeight = Math.max(
+      document.documentElement.scrollHeight,
+      document.body.scrollHeight
+    );
+    let scrollTop = Math.max(
+      document.documentElement.scrollTop,
+      document.body.scrollTop
+    );
+    let clientHeight = document.documentElement.clientHeight;
+
+    if (scrollTop + clientHeight >= scrollHeight) {
+      setPreItems(items);
+      setItems(items + 20);
+      
+      listSlice();
+    }
   }
 
   const popularOrRecentHandler = (e) => {
@@ -18,10 +44,16 @@ const Main = () => {
 
   useEffect(() => {
     const path = (popularOrRecent == 0 ? 'popular' : 'recent');
-    apiAxios.main('/main/' + path, getData);
+    apiAxios('/main/' + path, getData);
+    listSlice();
   }, [popularOrRecent]);
 
-  const renderingList = data.map((item) => 
+  useEffect(() => {
+    window.addEventListener("scroll", infiniteScroll, true);
+  }, []);
+
+
+  const renderingList = list.map((item) => 
     <MainCard 
       key={item.iboard}
       title={item.title}
