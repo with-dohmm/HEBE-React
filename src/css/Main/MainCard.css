@@ -8,11 +8,13 @@
   border-radius: 4px;
   font-family: 'GmarketSansMedium';
   cursor: pointer;
+  z-index: -2;
 } 
 .cardProfile {
   position: relative;
   height: 50px;
   width: 100%;
+  z-index: -1;
 }
 .profileImg {
   display: inline-block;

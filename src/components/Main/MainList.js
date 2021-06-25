@@ -52,7 +52,6 @@ const Main = () => {
     window.addEventListener("scroll", infiniteScroll, true);
   }, []);
 
-
   const renderingList = list.map((item) => 
     <MainCard 
       key={item.iboard}
