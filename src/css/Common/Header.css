@@ -61,7 +61,6 @@
   top: 2px;
   height: 100%;
   color: #acacad;
-  font-family: 'GmarketSansMedium';
   font-weight: 600;
 }
 #headerCenter a:hover {
@@ -80,12 +79,11 @@
   height: 40px;
   line-height: 40px;
   margin: 0 0.5vw;
-}
-#logoutBtn > a {
   color: #acacad;
-  font-family: 'GmarketSansMedium';
   font-weight: 600;
+  cursor: pointer;
 }
+
 #myPageBtn {
   padding: 5px 20px 3px 20px;
   border-radius: 30px;
@@ -95,13 +93,12 @@
   background:         linear-gradient(to right, #867ec7, #d57272);
   line-height: 30px;
   text-align: center;
-}
-#myPageBtn > a {
   color: white;
-  font-family: 'GmarketSansMedium';
   font-size: 15px;
   font-weight: 600;
+  cursor: pointer;
 }
+
 #headerRight > i {
   top: 38px;
   margin-right: 15px;
@@ -206,7 +203,6 @@
   background: linear-gradient(to right, #867ec7, #d57272) ;
   border-radius: 15px;
   color: #fcfcfc !important;
-  font-family: 'GmarketSansMedium';
   font-size: 15px;
   text-align: center;
   line-height: 32px;

@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+.join-wrap {
+    display: flex;
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 10;
+    left:0;
+    top: 0;
+}
+
+.join-wrap-back {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 9;
+    left:0;
+    background: rgb(79, 79, 79, 0.6);
+}
+
+.join-modal {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    height: 600px;
+    margin: auto;
+    padding: 50px 40px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 10;
+    background: #fcfcfc;
+    border-radius: 5px;
+    box-shadow: 0px 0px 20px 1px rgb(79, 79, 79, 0.6);
+}
+
+.join-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 17px;
+    color: #7d7c83;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.join-modal-title {
+    display: inline-block;
+    color: #7d7c83;
+    font-weight: 100;
+}
+
+.join-modal-input {
+    display: grid;
+    margin-top: 30px;
+    grid-template-columns: 1fr 65% 1fr;
+    justify-items: center;
+}
+
+.join-text-area {
+    display: grid;
+    grid-template-rows: 80px 80px 80px 80px;
+    justify-items: right;
+    margin-top: 12px;
+    text-align: start;
+}
+
+.join-text-area span {
+    color: #7d7c83;
+}
+
+.join-input-area {
+    display: grid;
+    width: 100%;
+    grid-template-rows: 80px 80px 80px 80px;
+    grid-template-columns: 100%;
+    justify-items: center;
+}
+
+.join-input-area input {
+    width: 80%;
+    height: 50%;
+    padding: 5px 0 0 15px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    color: #7d7c83;
+    border: 1px solid #bbbbbb;
+    border-radius: 10px;
+}
+
+.join-input-area input::placeholder {
+    color: #bbbbbb;
+}
+
+.join-input-area input:focus { 
+    outline-style: none;
+    box-shadow: 0 0 0 1px #5a73c4;
+}
+
+.join-email-check-btn {
+    padding: 10px 15px 6px 17px;
+    border: 1px solid #5a73c4;
+    border-radius: 10px;
+    color: #5a73c4;
+    cursor: pointer;
+}
+
+.join-modal-submit {
+    width: 25%;
+    margin: auto;
+    padding: 15px 10px 11px 10px;
+    border-radius: 8px;
+    color: #fcfcfc;
+    background: linear-gradient(to right, #867ec7, #d57272) ;
+    opacity: 0.9;
+    cursor: pointer;
+}
