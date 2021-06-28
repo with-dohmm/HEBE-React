@@ -6,7 +6,8 @@ import Main from './components/Main/Main';
 import Frame from './components/ToDo/Frame';
 import Join from './components/MyPage/Join';
 import Login from './components/MyPage/Login';
-import Common from './css/Common/Common.css';
+import './css/Common/Common.css';
+import MyPage from './components/MyPage/MyPage';
 
 const App = () => {
   return (
@@ -21,6 +22,9 @@ const App = () => {
           </Route>
           <Route path={"/todo"} exact={true}>
             <Frame />
+          </Route>
+          <Route path={"/myPage"} exact={true}>
+            <MyPage />
           </Route>
           {/* <Route path={"/diary"} exact={true}>
             <Diary />
