@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3e0e379e-713c-4f8d-840e-a79639c85424" name="Default Changelist" comment="apiAxios update">
+    <list default="true" id="3e0e379e-713c-4f8d-840e-a79639c85424" name="Default Changelist" comment="header 수정">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Common/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/Common/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/Common/Header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/Main/Main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/Main/Main.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -10,6 +13,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="hongjun" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1u3Zo7QDsMCUimmrylxvySST7zv" />
@@ -21,7 +29,6 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -47,24 +54,8 @@
       <option name="presentableId" value="Default" />
       <updated>1623896405272</updated>
       <workItem from="1623896407212" duration="170000" />
-      <workItem from="1624345771253" duration="711000" />
-      <workItem from="1624450192351" duration="721000" />
+      <workItem from="1624592323739" duration="1439000" />
     </task>
-    <task id="LOCAL-00001" summary="Database connected">
-      <created>1624345806266</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1624345806266</updated>
-    </task>
-    <task id="LOCAL-00002" summary="apiAxios update">
-      <created>1624450311663</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1624450311663</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -81,11 +72,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Database connected" />
-    <MESSAGE value="apiAxios update" />
-    <option name="LAST_COMMIT_MESSAGE" value="apiAxios update" />
   </component>
 </project>

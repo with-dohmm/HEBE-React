@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import MainCard from './MainCard';
 import '../../css/Main/Main.css';
-const apiAxios = require('../Common/apiAxios.js');
+const axios = require('axios');
 
 const Main = () => {
   const [popularOrRecent, setPopularOrRecent] = useState(0);
   const [data, setData] = useState([]);
   const [list, setList] = useState([]);
-
-  const getData = (data) => {
-    setData(data);
-  }
 
   const popularOrRecentHandler = (e) => {
     setPopularOrRecent((e.target.id === 'popularListBtn' ? 0 : 1));
@@ -18,7 +14,14 @@ const Main = () => {
 
   useEffect(() => {
     const path = (popularOrRecent == 0 ? 'popular' : 'recent');
-    apiAxios.main('/main/' + path, getData);
+    console.log(path);
+    axios.post('/api/main/' + path)
+    .then(function(response) {
+      setData(response.data);
+    })
+    .catch(function(error) {
+      console.log(error);
+    })
   }, [popularOrRecent]);
 
   const renderingList = data.map((item) => 
