@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import MainCard from './MainCard';
 import '../../css/Main/Main.css';
-const axios = require('axios');
+import axios from 'axios';
 
 const Main = () => {
   const [popularOrRecent, setPopularOrRecent] = useState(0);
   const [data, setData] = useState([]);
-  const [list, setList] = useState([]);
+  // const [list, setList] = useState([]); 실행 시 작동 잘 되면 삭제!
 
   const popularOrRecentHandler = (e) => {
     setPopularOrRecent((e.target.id === 'popularListBtn' ? 0 : 1));
@@ -27,6 +27,7 @@ const Main = () => {
   const renderingList = data.map((item) => 
     <MainCard 
       key={item.iboard}
+      iboard={item.iboard}
       title={item.title}
       regdt={item.regdt}
       favCnt={item.favCnt}

@@ -9,7 +9,8 @@
   box-shadow: 4px 4px 10px rgb(211, 211, 211);
   font-family: 'GmarketSansBold';
 }
-#logo {
+#logo > a {
+  display: block;
   height: 40px;
   width: 60px;
   margin: 25px 0;
@@ -253,17 +254,19 @@
   height: 32px;
   background: linear-gradient(to right, #867ec7, #d57272) ;
   border-radius: 15px;
-  color: #fcfcfc !important;
   font-family: 'GmarketSansMedium';
   font-size: 15px;
+  color: #fcfcfc !important;
   text-align: center;
   line-height: 32px;
+  cursor: pointer;
 }
 .search-modal-profile {
-  width: 80%;
+  width: 62%;
   height: 50px;
   margin: 15px 0 0 10%;
   line-height: 50px;
+  cursor: pointer;
 }
 .search-modal-profileImg {
   display: block;

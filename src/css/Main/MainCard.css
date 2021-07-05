@@ -8,7 +8,7 @@
   border-radius: 4px;
   font-family: 'GmarketSansMedium';
   cursor: pointer;
-  z-index: -2;
+  z-index: 3;
 } 
 .cardProfile {
   position: relative;

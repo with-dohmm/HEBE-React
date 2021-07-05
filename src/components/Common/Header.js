@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../css/Common/Header.css';
-const axios = require('axios');
+import axios from 'axios';
 
 const Header = () => {
   const [sessionToggle, setSessionToggle] = useState(1);
@@ -10,6 +10,7 @@ const Header = () => {
   const [searchUid, setSearchUid] = useState('');
   const [resultUser, setResultUser] = useState({});
 
+  // 반응형 메뉴 버튼 이벤트 활성화
   useEffect(() => {
     if (document.querySelector('#content') !== null) {
       document.querySelector('#content').addEventListener('click', () => {
@@ -19,41 +20,49 @@ const Header = () => {
     }
   }, []);
 
+  // 유저 검색 api
   const apiSearch = () => {
     axios.post('/api/search', null, { params: {
       uid: searchUid
     } })
-    .then(function(response) {
-      console.log(response.data);
-      console.log(response.data.uid);
+    .then((response) => {
       if (response.data.uid === undefined) {
         setResultUser({uid: '검색 결과가 없습니다.'});
       } else {
         setResultUser(response.data);
       }
     })
-    .catch(function(error) {
+    .catch((error) => {
       console.log(error);
     })
     document.querySelector('#searchInput').value = '';
   }
 
+  // 검색한 유저 diary 조회
+  useEffect(() => {
+    if (resultUser.uid !== undefined || resultUser.uid !== null) {
+      document.querySelector('.search-modal-profile').addEventListener('click', function() {
+        document.location.href = "/diary/" + resultUser.uid;
+      });
+    }
+  }, [resultUser])
+
   return (
     <div id="header">
       <div id="mobileMenu"><i className="fas fa-bars" onClick={() => {setLeftMenuToggle(leftMenuToggle === 0 ? 1 : 0); setRightMenuToggle(0)}}></i></div>
-      <div id="logo">HEBE</div>
+      <div id="logo"><a href="/">HEBE</a></div>
       <div id="headerCenter">
         <div>
           <span><a href="/">Home</a></span>
           <span><a href="/todo">To Do</a></span>
-          <span><a href="/diary">My Diray</a></span>
+          <span><a href="/diary/jun17183">My Diray</a></span>
           <span><a href="#">Favorite</a></span>
         </div>
       </div>
       <div className={(leftMenuToggle === 0 ? 'left-hidden-menu' : 'left-hidden-menu display-inline-block')}>
         <span><a href="/">Home</a></span>
         <span><a href="/todo">To Do</a></span>
-        <span><a href="/diary">My Diray</a></span>
+        <span><a href={"/diary/jun17183"}>My Diary</a></span>
         <span><a href="#">Favorite</a></span>
       </div>
       <div id="headerRight">
