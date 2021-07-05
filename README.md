@@ -8,6 +8,6 @@
 - backend단과 연동 테스트
 
 ### Library
-npm i react-draft-wysiwyg
-npm i draft-js
-npm i draftjs-to-html
+npm i react-draft-wysiwyg   
+npm i draft-js   
+npm i draftjs-to-html   
