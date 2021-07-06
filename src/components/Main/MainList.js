@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import MainCard from './MainCard';
-import apiAxios from '../Common/apiAxios';
 import '../../css/Main/Main.css';
 
 const Main = () => {

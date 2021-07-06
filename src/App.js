@@ -1,34 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import Header from './components/Common/Header';
 import Main from './components/Main/Main';
-//import Diary from './components/Diary/Diary';
-//import Write from './components/Diary/Write';
-//import Frame from './components/ToDo/Frame';
-//import Detail from './components/Diary/Detail';
-import MyPage from './components/MyPage/MyPage';
+// import Diary from './components/Diary/Diary';
+import Frame from './components/ToDo/Frame';
 import Join from './components/MyPage/Join';
 import Login from './components/MyPage/Login';
 import './css/Common/Common.css';
-
-export const Authentication = React.createContext(null);
+import MyPage from './components/MyPage/MyPage';
 
 const App = () => {
-  const [authorization, setAuthorization] = useState(null);
-
   return (
     <BrowserRouter>
       <div className="app">
         <Header />
-        <Login/>
+        <Login />
         <Join />
         <Switch>
-          <Route path={"/"} component={Main} exact={true} />
-          {/*<Route path={"/todo"} component={Frame} />
-          <Route path={"/diary/:uid"} component={Diary} />
-          <Route path={"/write"} component={Write} />
-          <Route path={"/detail/:iboard"} component={Detail} />*/}
-          <Route path={"/myPage"} component={MyPage} />
+          <Route path={"/"} exact={true}>
+            <Main /> 
+          </Route>
+          <Route path={"/todo"} exact={true}>
+            <Frame />
+          </Route>
+          <Route path={"/myPage"} exact={true}>
+            <MyPage />
+          </Route>
+          {/* <Route path={"/diary"} exact={true}>
+            <Diary />
+          </Route> */}
         </Switch>
       </div>
     </BrowserRouter>

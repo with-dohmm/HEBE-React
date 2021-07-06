@@ -54,7 +54,7 @@ const Join = () => {
     }
     
     return (
-        <div id="joinWrap" className="join-wrap hidden">
+        <div id="joinWrap" className="join-wrap ">
             <div className="join-modal">
                 <div id="joinCloseBtn" className="join-modal-close" onClick={joinModalClose}>&times;</div>
                 <h1 className="join-modal-title">JOIN</h1>
