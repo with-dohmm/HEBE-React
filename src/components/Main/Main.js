@@ -21,7 +21,7 @@ const Main = () => {
     })
     .catch(function(error) {
       console.log(error);
-    })
+    }) 
   }, [popularOrRecent]);
 
   const renderingList = data.map((item) => 

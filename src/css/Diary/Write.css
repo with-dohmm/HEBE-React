@@ -1,0 +1,82 @@
+.editor {
+  width: 900px;
+  min-height: 700px;
+  margin: 35px auto;
+  background-color: white;
+  box-shadow: 3px 3px 5px 1px rgb(211, 211, 211)
+             ,-3px 3px 5px 1px rgb(211, 211, 211);
+}
+.rdw-editor-main {
+  height: 550px;
+  padding: 5px 20px;
+  overflow: auto;
+}
+.rdw-editor-main::-webkit-scrollbar {
+  width: 25px;
+  height: 100px;
+}
+.rdw-editor-main::-webkit-scrollbar-thumb {
+  
+  background-color: #c7c7c7;
+  background-clip: padding-box;
+  border-radius: 25px;
+  border: 8px solid transparent;
+}
+.DraftEditor-root {
+  height: calc(100% - 20px);
+}
+.editor-title {
+  margin: 15px;
+  height: 40px;
+  width: 870px;
+  border: none;
+  outline: none;
+  font-size: 20px;
+}
+.textEditor-footer {
+  height: 70px;
+  margin-top: 20px;
+  box-shadow: 0 -6px 6px -6px rgb(211, 211, 211);
+}
+.textEditor-footer-cancelBtn {
+  float: left;
+  position: relative;
+  top: 15px;
+  left: 20px;
+  background-color: #c7c7c7;
+  border-radius: 30px;
+  line-height: 40px;
+  text-align: center;
+}
+.textEditor-footer-cancelBtn > a {
+  display: inline-block;
+  width: 80px;
+  height: 38px;
+  color: white;
+  font-family: 'GmarketSansMedium';
+  font-size: 17px;
+  font-weight: 600;
+}
+.textEditor-footer-writeBtn {
+  float: right;
+  position: relative;
+  top: 15px;
+  right: 20px;
+  width: 80px;
+  height: 38px;
+  background: -webkit-linear-gradient(left, #867ec7, #d57272);
+  background:    -moz-linear-gradient(right, #867ec7, #d57272);
+  background:      -o-linear-gradient(right, #867ec7, #d57272);
+  background:         linear-gradient(to right, #867ec7, #d57272);
+  border-radius: 30px;
+  line-height: 40px;
+  text-align: center;
+  color: white;
+  font-family: 'GmarketSansMedium';
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.visible {
+  visibility: visible;
+}
