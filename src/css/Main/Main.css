@@ -1,12 +1,13 @@
 #content {
   width: 85%;
-  margin: auto;
-  padding: 1%;
+  padding: 1% 7.5%;
 }
+
 #content-header {
   margin-bottom: 30px;
   padding: 0 25px;
 }
+
 #listTitle {
   font-family: 'GmarketSansMedium';
   font-size: 30px;
@@ -19,6 +20,7 @@
           background-clip: text;
   color: transparent;
 }
+
 #recentListBtn, #popularListBtn {
   float: right;
   position: relative;
@@ -28,8 +30,9 @@
   font-family: 'GmarketSansMedium';
   font-size: 18px;
   cursor: pointer;
-  z-index: 8;
+  z-index: 100;
 }
+
 .btn-clicked {
   background: #867ec7;
   background: -webkit-linear-gradient(left, #867ec7, #d57272);
@@ -40,9 +43,11 @@
           background-clip: text;
   color: transparent;
 }
+
 .btn-no-clicked {
   color: #acacad;
 }
+
 #itemList {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(323px, auto));

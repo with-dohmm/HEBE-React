@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../css/Common/Header.css';
+import axios from 'axios';
 
 const Header = () => {
   const [sessionToggle, setSessionToggle] = useState(1);
   const [searchToggle, setSearchToggle] = useState(0);
+  const [leftMenuToggle, setLeftMenuToggle] = useState(0);
+  const [rightMenuToggle, setRightMenuToggle] = useState(0);
+  const [searchUid, setSearchUid] = useState('');
+  const [resultUser, setResultUser] = useState({});
 
   const myPageToggle = () => {
     sessionToggle === 1 ? 
@@ -19,39 +24,91 @@ const Header = () => {
     document.querySelector('#loginEmailInput').focus();
   }
 
+  // 반응형 메뉴 버튼 이벤트 활성화
+  useEffect(() => {
+    if (document.querySelector('#content') !== null) {
+      document.querySelector('#content').addEventListener('click', () => {
+        setLeftMenuToggle(0);
+        setRightMenuToggle(0);
+      });
+    }
+  }, []);
+
+  // 유저 검색 api
+  const apiSearch = () => {
+    axios.post('/api/search', null, { params: {
+      uid: searchUid
+    } })
+    .then((response) => {
+      if (response.data.uid === undefined) {
+        setResultUser({uid: '검색 결과가 없습니다.'});
+      } else {
+        setResultUser(response.data);
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+    document.querySelector('#searchInput').value = '';
+  }
+
+  // 검색한 유저 diary 조회
+  useEffect(() => {
+    if (resultUser.uid !== undefined || resultUser.uid !== null) {
+      document.querySelector('.search-modal-profile').addEventListener('click', function() {
+        document.location.href = "/diary/" + resultUser.uid;
+      });
+    }
+  }, [resultUser])
+
   return (
     <div id="header">
-      <div id="mobileMenu"><i className="fas fa-bars"></i></div>
-      <div id="logo">HEBE</div>
+      <div id="mobileMenu"><i className="fas fa-bars" onClick={() => {setLeftMenuToggle(leftMenuToggle === 0 ? 1 : 0); setRightMenuToggle(0)}}></i></div>
+      <div id="logo"><a href="/">HEBE</a></div>
       <div id="headerCenter">
         <div>
           <span><a href="/">Home</a></span>
           <span><a href="/todo">To Do</a></span>
-          <span><a href="/diary">My Diary</a></span>
-          <span><a href="favorite">Favorite</a></span>
+          <span><a href="/diary/jun17183">My Diray</a></span>
+          <span><a href="#">Favorite</a></span>
         </div>
       </div>
+
+      <div className={(leftMenuToggle === 0 ? 'left-hidden-menu' : 'left-hidden-menu display-inline-block')}>
+        <span><a href="/">Home</a></span>
+        <span><a href="/todo">To Do</a></span>
+        <span><a href={"/diary/jun17183"}>My Diary</a></span>
+        <span><a href="#">Favorite</a></span>
+      </div>
+
       <div id="headerRight">
-      <span id="myPageBtn" onClick={ myPageToggle }>{sessionToggle === 1 ? 'My Page' : 'Join'}</span>
-      <span id="logoutBtn" onClick={ loginToggle }>{sessionToggle === 1 ? 'Log Out' : 'Log in'}</span>
-        <i className="fas fa-search" onClick={() => setSearchToggle(searchToggle === 0 ? 1 : 0)}></i>
-      </div>
-      <div id="rightDot"><i className="fas fa-ellipsis-v"></i></div>
-      <div className="right-hidden-menu">
         <span id="myPageBtn" onClick={ myPageToggle }>{sessionToggle === 1 ? 'My Page' : 'Join'}</span>
-        <span id="myPageBtn" onClick={ myPageToggle }>{sessionToggle === 1 ? 'My Page' : 'Join'}</span>
+        <span id="logoutBtn" onClick={ loginToggle }>{sessionToggle === 1 ? 'Log Out' : 'Log in'}</span>
+          <i className="fas fa-search" onClick={() => setSearchToggle(searchToggle === 0 ? 1 : 0)}></i>
       </div>
+      
+      <div id="rightDot"><i className="fas fa-ellipsis-v" onClick={() => {setRightMenuToggle(rightMenuToggle === 0 ? 1 : 0); setLeftMenuToggle(0)}}></i></div>
+      
+      <div className={(rightMenuToggle === 0 ? 'right-hidden-menu' : 'right-hidden-menu display-inline-block')}>
+        <div>My Page</div>
+        <span></span>
+        <div onClick={() => {setSearchToggle(searchToggle === 0 ? 1 : 0); setRightMenuToggle(0);}}>Search</div>
+        <span></span>
+        <div>Log out</div>
+      </div>
+
       <div 
         className={(searchToggle === 0 ? 'search-modal-background' : 'search-modal-background display-inline-block')}
-        onClick={() => setSearchToggle(searchToggle === 0 ? 1 : 0)}  
+        onClick={() => {setSearchToggle(searchToggle === 0 ? 1 : 0); setResultUser({});}}  
       >
       </div>
       <div className={(searchToggle === 0 ? 'search-modal-box' : 'search-modal-box display-inline-block')}>
-        <input type="text" placeholder="search user"></input>
-        <span>search</span>
+        <input id="searchInput" type="text" placeholder="search user" onChange={(e) => setSearchUid(e.target.value)}></input>
+        <span onClick={apiSearch}>search</span>
         <div className="search-modal-profile">
-          <span className="search-modal-profileImg"></span>
-          <span className="search-modal-profileId">jun17183</span>
+          <img className={resultUser.profileImg === undefined ? "search-modal-profileImg hidden" : "search-modal-profileImg"}
+            src={`${process.env.PUBLIC_URL + '/img' + resultUser.profileImg}`}></img>
+          <span className="search-modal-profileId">{resultUser.uid}</span>
         </div>
       </div>
     </div>

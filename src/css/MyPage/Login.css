@@ -32,7 +32,6 @@
     z-index: 10;
     background: #fcfcfc;
     border-radius: 5px;
-    box-shadow: 0px 0px 20px 1px rgb(79, 79, 79, 0.6);
 }
 
 .login-modal-close {
@@ -95,7 +94,7 @@
 
 .login-join-modal {
     font-size: 0.8rem;
-    color: #7d7c83;
+    color: #7d7c83 !important;
 }
 
 .login-join-modal span:nth-child(2) {
