@@ -1,0 +1,193 @@
+.detail {
+  width: 900px;
+  margin: 35px auto;
+  padding: 25px 35px 15px 35px;
+  background-color: white;
+  box-shadow: 3px 3px 5px 1px rgb(211, 211, 211)
+             ,-3px 3px 5px 1px rgb(211, 211, 211);
+  word-wrap: break-word;
+}
+.detail * {
+  font-family: 'GmarketSansMedium';
+}
+.detail-title {
+  height: 80px;
+  font-size: 35px;
+  line-height: 80px;
+  text-align: center;
+}
+.detail-title-btn {
+  height: 15px;
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #c0c0c0;
+  line-height: 15px;
+  text-align: center;
+  font-size: 14px;
+  color: #acacad;
+}
+.detail-title-btn span {
+  margin-right: 15px;
+}
+.detail-title-btn span:not(:first-child) {
+  cursor: pointer;
+}
+.detail-content {
+  min-height: 300px;
+  margin-bottom: 10px;
+  padding : 0 10px 30px 10px;
+  border-bottom: 1px solid #c0c0c0;
+}
+.detail-profile {
+  height: 120px;
+  padding: 15px 70px 20px 70px;
+  margin-bottom: 10px;
+}
+.detail-profile > img {
+  float: left;
+  width: 120px;
+  height: 120px;
+  border-radius: 250px;
+  object-fit: cover;
+}
+.detail-profile-introduce {
+  float: left;
+  margin-left: 45px;
+  padding: 20px 0 25px 0;
+  height: 75px;
+  width: calc(100% - 220px);
+  line-height: 40px;
+}
+.detail-profile-introduce > div:first-child {
+  font-size: 22px;
+}
+.detail-reply-top {
+  height: 33px;
+  padding: 0 12px;
+  border-bottom: 1px solid #c0c0c0;
+}
+.detail-reply-top > div {
+  font-size: 20px;
+}
+.detail-reply-top > div:first-child {
+  float: left;
+}
+.detail-reply-top > div:last-child {
+  float: right;
+  cursor: pointer;
+}
+.detail-reply {
+  position: relative;
+  margin-top: 15px;
+}
+.detail-reply > textarea {
+  display: block;
+  width: 92%;
+  height: 70px;
+  margin: 0 auto 60px auto;
+  padding: 15px;
+  border: 1px solid #c0c0c0;
+  resize: none;
+  outline: none;
+}
+.detail-reply-btn {
+  position: absolute;
+  top: 115px;
+  right: 24px;
+  width: 70px;
+  padding: 5px 10px;
+  background: -webkit-linear-gradient(left, #867ec7, #d57272);
+  background:    -moz-linear-gradient(right, #867ec7, #d57272);
+  background:      -o-linear-gradient(right, #867ec7, #d57272);
+  background:         linear-gradient(to right, #867ec7, #d57272);
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+.detail-reply-list {
+  width: 100%;
+}
+
+/* ========== 댓글 ========== */
+.cmt-item {
+  width: 100%;
+  margin-top: 8px;
+  border-bottom: 1px solid #acacad;
+}
+.cmt-item:last-child {
+  border: 0;
+}
+.cmt-item-top {
+  position: relative;
+  width: calc(100% - 60px);
+  height: 70px;
+  padding: 10px 30px;
+}
+.cmt-item-top > img {
+  display: inline;
+  width: 70px;
+  height: 70px;
+  margin-right: 30px;
+  border-radius: 70px;
+  object-fit: cover;
+}
+.cmt-item-top-profile {
+  display: inline-block;
+  height: 70px;
+  width: calc(100%-150px);
+}
+.cmt-controllbox {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+.cmt-controllbox > span {
+  font-size: 14px;
+  color: #acacad;
+  cursor: pointer;
+}
+.cmt-controllbox > span:last-child {
+  margin-left: 6px;
+}
+.cmt-item-top-profile > div {
+  position: relative;
+  bottom: 11px;
+  height: 28px;
+  line-height: 35px;
+}
+.cmt-item-top-profile > div:nth-child(2) {
+  height: 20px;
+  font-size: 12px;
+  bottom: 13px;
+}
+.cmt-item-bottom {
+  width: 100%;
+  padding: 10px 20px 17px 20px;
+}
+.cmt-updatebox {
+  position: relative;
+}
+.cmt-updatebox > textarea {
+  height: 40px;
+  width: 92%;
+  padding: 15px;
+  border: 1px solid #c0c0c0;
+  resize: none;
+  outline: none;
+}
+.cmt-updatebox > span {
+  position: absolute;
+  bottom: 16px;
+  right: 50px;
+  padding: 3px 6px;
+  background: -webkit-linear-gradient(left, #867ec7, #d57272);
+  background:    -moz-linear-gradient(right, #867ec7, #d57272);
+  background:      -o-linear-gradient(right, #867ec7, #d57272);
+  background:         linear-gradient(to right, #867ec7, #d57272);
+  border-radius: 5px;
+  color: white;
+  font-size: 13px;
+  text-align: center;
+  cursor: pointer;
+}

@@ -1,37 +1,48 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Editor } from 'react-draft-wysiwyg';
-import { EditorState, convertToRaw } from 'draft-js';
-// import { convertToHTML, convertFromHTML } from 'draft-convert';
+import { EditorState, convertToRaw, ContentState } from 'draft-js';
+import { convertToHTML, convertFromHTML } from 'draft-convert';
 import draftToHtml from 'draftjs-to-html';
+import htmlToDraft from 'html-to-draftjs';
 import createImagePlugin from '@draft-js-plugins/image';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import axios from 'axios';
 
+const stateFromHTML = require('draft-js-import-html').stateFromHTML;
 const imagePlugin = createImagePlugin();
 
-const TextEditor = () => {
-  const [title, setTitle] = useState('');   // title input onChange 담아두는 용도
+const UpdateEditor = (props) => {
+  const [title, setTitle] = useState('');
+  const [data, setData] = useState({});
   const [editorState, setEditorState] = useState(
     () => EditorState.createEmpty(),
   );
-  const iboard = useRef(0);
+  const iboard = props.iboard;
+  const iuser = 1;  // 수정 필수
   const imgSrc = useRef("");
   const thumbnailSrc = useRef(null);
 
-  // 최신 iboard 값 가져오기 -> +1 한 값을 iboard 변수에 담아줌
-  // 로그인한 유저 iuser와 iboard 변수 조합으로 폴더 경로 생성
+  // 업데이트 전 기존 데이터 불러오기
   useEffect(() => {
-    axios.post('/api/diary/recent')
+    axios.post('/api/detail', null, { params: {
+      iboard: parseInt(iboard),
+      iuser: iuser
+    } })
     .then((response) => {
-      console.log('most recent iboard : ' + response.data);
-      iboard.current = parseInt(response.data);
+      setData(response.data);
+      const blocksFromHtml = htmlToDraft(response.data.content);
+      const { contentBlocks, entityMap } = blocksFromHtml;
+      const contentState = ContentState.createFromBlockArray(contentBlocks, entityMap);
+      const editorState = EditorState.createWithContent(contentState);
+      setEditorState(editorState);
+      setTitle(response.data.title);
     })
     .catch((error) => {
       console.log(error);
-    })
+    });
   }, []);
 
-  // 글쓰기 작성 완료
+  // 글쓰기 수정 완료
   const apiWrite = () => {
     console.log('apiWrite 작동');
     console.log(iboard);
@@ -43,17 +54,17 @@ const TextEditor = () => {
 
     axios.post('/api/write', null, { params: {
       iuser: 1, // 수정 필수
-      iboard: iboard.current,
+      iboard: iboard,
       title: title,
-      content: draftHtml,
+      content: draftToHtml(convertToRaw(editorState.getCurrentContent())),
       thumbnail: (thumbnailSrc.current !== null ? thumbnailSrc.current : process.env.PUBLIC_URL + '/img/cat_profile.jpg')
     } })
     .then((response) => {
-      if (response.data === 1) { 
-        alert('작성 완료');
+      if (response.data === 1) {
+        alert('수정 완료!');
         document.location.href = "/diary/1";  // 수정 필수
-      } else { 
-        alert('작성 실패'); 
+      } else {
+        alert('수정 실패');
       }
     })
     .catch((error) => {
@@ -68,7 +79,7 @@ const TextEditor = () => {
         if (file) {
           const data = new FormData();
           data.append('img', file);
-          data.append('iboard', iboard.current); // 수정 필수
+          data.append('iboard', iboard);
           data.append('iuser', 1); // 수정 필수
 
           axios({
@@ -79,7 +90,7 @@ const TextEditor = () => {
           })
           .then((response) => {
             console.log('file name : ' + response.data);
-            imgSrc.current = process.env.PUBLIC_URL + '/img/1/' + iboard.current + '/' + response.data; // 수정 필수! /img/ 에 올 숫자
+            imgSrc.current = process.env.PUBLIC_URL + '/img/' + iuser + '/' + iboard + '/' + response.data;
           })
           .catch((error) => {
             console.log(error);
@@ -101,33 +112,14 @@ const TextEditor = () => {
     );
   }
 
-  // 작성 취소
-  const apiCancel = () => {
-    axios.post('/api/cancel', null, { params: {
-      iboard: iboard.current,
-      iuser: 1  // 수정 필수
-    } })
-    .then((response) => {
-      if (response.data === 1) {
-        console.log('작성 취소 성공');
-        document.location.href = '/diary/1';  // 수정 필수
-      } else {
-        console.log('실패')
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-    })
-  }
-
-  // 뒤로가기 시 자동 작성 취소
-  window.onbeforeunload = () => {
-    apiCancel();
-  }
-
   return (
     <div id="textEditor">
-      <input className="editor-title" type="text" placeholder="제목" onChange={(e) => setTitle(e.target.value)}></input>
+      <input className="editor-title" 
+             type="text" 
+             placeholder="제목" 
+             value={title}
+             onChange={(e) => setTitle(e.target.value)}>
+      </input>
       <Editor
         editorState={editorState}
         plugins={[imagePlugin]}
@@ -155,11 +147,11 @@ const TextEditor = () => {
      }}
       />
       <div className="textEditor-footer">
-        <span className="textEditor-footer-cancelBtn" onClick={() => apiCancel()}>취소</span>
+        <span className="textEditor-footer-cancelBtn" onClick={() => {document.location.href = "/detail/:iboard"}}>취소</span>
         <span className="textEditor-footer-writeBtn" onClick={() => apiWrite()}>작성</span>
       </div>
     </div>
   )
 }
 
-export default TextEditor;
+export default UpdateEditor;
