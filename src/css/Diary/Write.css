@@ -10,13 +10,13 @@
   height: 550px;
   padding: 5px 20px;
   overflow: auto;
+  overflow-x: hidden;
 }
 .rdw-editor-main::-webkit-scrollbar {
   width: 25px;
   height: 100px;
 }
 .rdw-editor-main::-webkit-scrollbar-thumb {
-  
   background-color: #c7c7c7;
   background-clip: padding-box;
   border-radius: 25px;
@@ -43,12 +43,19 @@
   position: relative;
   top: 15px;
   left: 20px;
+  width: 80px;
+  height: 38px;
   background-color: #c7c7c7;
   border-radius: 30px;
+  color: white;
+  font-family: 'GmarketSansMedium';
+  font-size: 17px;
+  font-weight: 600;
   line-height: 40px;
   text-align: center;
+  cursor: pointer;
 }
-.textEditor-footer-cancelBtn > a {
+/* .textEditor-footer-cancelBtn > a {
   display: inline-block;
   width: 80px;
   height: 38px;
@@ -56,7 +63,7 @@
   font-family: 'GmarketSansMedium';
   font-size: 17px;
   font-weight: 600;
-}
+} */
 .textEditor-footer-writeBtn {
   float: right;
   position: relative;
@@ -69,12 +76,12 @@
   background:      -o-linear-gradient(right, #867ec7, #d57272);
   background:         linear-gradient(to right, #867ec7, #d57272);
   border-radius: 30px;
-  line-height: 40px;
-  text-align: center;
   color: white;
   font-family: 'GmarketSansMedium';
   font-size: 17px;
   font-weight: 600;
+  line-height: 40px;
+  text-align: center;
   cursor: pointer;
 }
 .visible {

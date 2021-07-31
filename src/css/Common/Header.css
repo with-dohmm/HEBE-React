@@ -1,5 +1,5 @@
 * { user-select: none; }
-#header {
+.header {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   padding: 0 4.5%;
@@ -9,7 +9,7 @@
   box-shadow: 4px 4px 10px rgb(211, 211, 211);
   font-family: 'GmarketSansBold';
 }
-#logo > a {
+.logo > a {
   display: block;
   height: 40px;
   width: 60px;
@@ -26,22 +26,22 @@
   color: transparent;
   cursor: pointer;
 }
-#headerCenter {
+.header-center {
   display: flex;
   justify-content: center;
   text-align: center;
   line-height: 89px;
 }
-#headerCenter > div {
+.header-center > div {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   width: 500px;
   height: 89px;
 }
-#headerCenter span {
+.header-center span {
   position: relative;
 }
-#headerCenter span::after {
+.header-center span::after {
   content: ""; 
   position: absolute; 
   bottom: -1px; left: 50%; 
@@ -54,10 +54,10 @@
   background:         linear-gradient(to right, #867ec7, #d57272);
   transition: all .2s ease-out;
 }
-#headerCenter span:hover::after {
+.header-center span:hover::after {
   width: 100%;
 }
-#headerCenter a {
+.header-center a {
   display: inline-block;
   position: relative;
   top: 2px;
@@ -66,28 +66,30 @@
   font-family: 'GmarketSansMedium';
   font-weight: 600;
 }
-#headerCenter a:hover {
+.header-center a:hover {
   color: #6e6d74;
 }
-#headerRight > * {
+.header-right > * {
   float: right;
   position: relative;
   top: 26px;
 }
-#headerRight > span {
+.header-right > span {
   display: inline-block;
   width: 80px;
 }
+
+ /*  */
 #logoutBtn {
   height: 40px;
   line-height: 40px;
   margin: 0 0.5vw;
-}
-#logoutBtn > a {
   color: #acacad;
-  font-family: 'GmarketSansMedium';
   font-weight: 600;
+  cursor: pointer;
 }
+
+ /*  */
 #myPageBtn {
   padding: 5px 20px 3px 20px;
   border-radius: 30px;
@@ -97,23 +99,25 @@
   background:         linear-gradient(to right, #867ec7, #d57272);
   line-height: 30px;
   text-align: center;
-}
-#myPageBtn > a {
   color: white;
-  font-family: 'GmarketSansMedium';
   font-size: 15px;
   font-weight: 600;
+  cursor: pointer;
 }
-#headerRight > i {
+
+
+.header-right > i {
   top: 38px;
   margin-right: 15px;
   color: #acacad;
   cursor: pointer;
 }
-#rightDot {
+
+.right-dot {
   display: none;
 }
-#rightDot > i {
+
+.right-dot > i {
   position: relative;
   top: 35px;
   float: right;
@@ -121,6 +125,7 @@
   color: #acacad;
   cursor: pointer;
 }
+
 .right-hidden-menu {
   display: none;
   position: absolute;
@@ -131,7 +136,7 @@
   background-color: white;
   box-shadow: 6px 6px 10px rgb(211, 211, 211);
   color: #acacad;
-  z-index: 9999;
+  z-index: 6;
 }
 .right-hidden-menu > div {
   height : 48px;
@@ -169,10 +174,10 @@
   margin: auto;
   background-color: #acacad;
 }
-#mobileMenu {
+.mobile-menu {
   display: none;
 }
-#mobileMenu > i {
+.mobile-menu > i {
   position: relative;
   top: 35px;
   font-size: 20px;
@@ -182,7 +187,8 @@
 .left-hidden-menu {
   display: none;
   position: absolute;
-  width: calc(100vw - 16.8px);
+  /* width: calc(100vw - 16.8px); */
+  width: 100vw;
   top: 92px;
   left: 0;
   background-color: #ffffff;
@@ -229,22 +235,34 @@
   top: 15%;
   left: 50%; 
   transform:translateX(-50%);
+  padding-bottom: 25px;
+  min-height: 80px;
   width: 40%;
-  height: 160px;
   background-color: #ffffff;
   z-index: 9999;
   overflow: hidden;
   user-select: none;
 }
-.search-modal-box > input {
-  width: 63%;
+.search-input {
+  width: 73%;
   height: 30px;
   padding: 2px 0 0 10px;
-  margin: 30px 10px 0 10%;
+  margin: 30px 10px 10px 10%;
   border: 1px solid #bbbbbb;
   border-radius: 10px;
   outline: none;
   color: #7d7c83;
+}
+.search-input:focus {
+  border: 1px solid #867ec7;
+  border-radius: 10px;
+}
+
+.search-modal-box > i {
+  display: inline-block;
+  margin-left: 5px;
+  color: #9c9c9c;
+  cursor: pointer;
 }
 .search-modal-box > span {
   display: inline-block;
@@ -262,27 +280,49 @@
   cursor: pointer;
 }
 .search-modal-profile {
-  width: 62%;
-  height: 50px;
-  margin: 15px 0 0 10%;
-  line-height: 50px;
+  width: 80%;
+  height: 100px;
+  margin: 5px 0 0 10%;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(182, 182, 182);
   cursor: pointer;
+}
+.search-modal-profile:last-child {
+  border-bottom: 0px;
 }
 .search-modal-profileImg {
   display: block;
   float: left;
-  height: 30px;
-  width: 30px;
+  height: 80px;
+  width: 80px;
   margin: 10px 10px;
   border-radius: 40px;
 }
-.search-modal-profileId {
+.search-modal-profileContent {
   display: block;
   position: relative;
   float: left;
   left: 10px;
   width: calc(80% - 40px);
+  height: 100%;
   font-family: 'GmarketSansMedium';
+}
+.search-modal-profileContent > span {
+  display: block;
+  position: relative;
+  overflow:hidden; 
+  text-overflow:ellipsis; 
+  white-space:nowrap;
+}
+.search-modal-profileContent > span:first-child {
+  top: calc(50% - 25px);
+  font-size: 18px;
+  color: rgb(112, 112, 112);
+}
+.search-modal-profileContent > span:last-child {
+  top: calc(50% - 20px);
+  font-size: 14px;
+  color:rgb(114, 114, 114);
 }
 .display-inline-block {
   display: inline-block;
@@ -293,20 +333,20 @@
 
 
 @media only screen and (max-width: 1350px) {
-  #header {
+  .header {
     grid-template-columns: auto 614px 307px;
   }
-  .search-modal-box > input {
-    width: 62%;
+  .search-input {
+    width: 72.5%;
   }
 }
 @media only screen and (max-width: 1220px) {
-  .search-modal-box > input {
-    width: 58%;
+  .search-input {
+    width: 71.5%;
   }
 }
 @media only screen and (max-width: 1150px) {
-  #header {
+  .header {
     grid-template-columns: auto 614px auto;
   }
 }
@@ -317,27 +357,27 @@
   
 }
 @media only screen and (max-width: 1025px) {
-  #header {
+  .header {
     grid-template-columns: 1fr 614px 1fr;
   }
-  #headerRight {
+  .header-right {
     display: none;
   }
-  #rightDot {
+  .right-dot {
     display: inline-block;
   }
 }
 @media only screen and (max-width: 800px) {
-  #header {
+  .header {
     grid-template-columns: 1fr 1fr 1fr;
   }
-  #headerCenter {
+  .header-center {
     display: none;
   }
-  #logo {
+  .logo {
     justify-self: center;
   }
-  #mobileMenu {
+  .mobile-menu {
     display: inline-block;
   }
 }
@@ -351,4 +391,3 @@
     display: none;
   }
 }
-  
