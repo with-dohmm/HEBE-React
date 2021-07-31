@@ -38,6 +38,7 @@
     position: absolute;
     top: 10px;
     right: 17px;
+    color: #7d7c83;
     font-size: 1.5rem;
     cursor: pointer;
 }
@@ -59,11 +60,11 @@
     display: grid;
     grid-template-rows: 80px 80px 80px 80px;
     justify-items: right;
-    margin-top: 12px;
     text-align: start;
 }
 
 .join-text-area span {
+    margin-top: 10px;
     color: #7d7c83;
 }
 
@@ -85,6 +86,19 @@
     color: #7d7c83;
     border: 1px solid #bbbbbb;
     border-radius: 10px;
+}
+
+.join-email-auth-area {
+    width: 100%;
+    position: relative;
+}
+
+.join-email-auth-timer {
+    position: absolute;
+    right: 15px; 
+    top: 12px;
+    color: #7d7c83;
+    letter-spacing: 1px;
 }
 
 .join-input-area input::placeholder {
@@ -124,7 +138,7 @@
 
 .join-email-select {
     width: 95%;
-    padding-top: 6px;
+    padding-top: 5px;
     box-sizing: border-box;
     font-size: 1rem;
     color: #7d7c83;
@@ -139,12 +153,40 @@
 	display: none;
 }
 
+.join-warn-area {
+    display: grid;
+    grid-template-rows: 77px 80px 86px 80px;
+    justify-items: left;
+    text-align: start;
+}
+
+.join-warn-area span {
+    margin-top: 10px;
+    color: #7d7c83;
+}
+
 .join-email-check-btn {
+    padding: 10px 15px 6px 17px;
+    border: 1px solid #d57272;
+    border-radius: 10px;
+    color: #d57272;
+    cursor: pointer;
+}
+
+.join-email-auth-btn {
     padding: 10px 15px 6px 17px;
     border: 1px solid #5a73c4;
     border-radius: 10px;
     color: #5a73c4;
     cursor: pointer;
+}
+
+.join-email-auth-com {
+    display: inline-block;
+    width: 100%;
+    padding: 9px 15px;
+    text-align: left;
+    color: #5a73c4;
 }
 
 .join-modal-submit {

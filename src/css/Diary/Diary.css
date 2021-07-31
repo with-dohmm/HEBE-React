@@ -1,0 +1,48 @@
+.diary {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+.page-title {
+  width: 85%;
+  height: 38.4px;
+  margin: 0 auto 15px auto;
+  padding: 1%;
+}
+.page-title > span:first-child {
+  display: block;
+  float: left;
+  font-family: 'GmarketSansMedium';
+  font-size: 30px;
+  background: #867ec7;
+  background: -webkit-linear-gradient(left, #867ec7, #d57272);
+  background:    -moz-linear-gradient(right, #867ec7, #d57272);
+  background:      -o-linear-gradient(right, #867ec7, #d57272);
+  background:         linear-gradient(to right, #867ec7, #d57272);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.page-title > img {
+  position: relative;
+  top: 5px;
+  float: left;
+  margin-left: 20px;
+  height: 25px;
+  object-fit: cover;
+  cursor: pointer;
+}
+.card-section {
+  display: inline-grid;
+  grid-template-columns: repeat(auto-fill, minmax(323px, auto));
+  width: 60%;
+  justify-content: center;
+}
+.calender-box {
+  position: relative;
+  right: 7%;
+  float: right;
+  width: 36%;
+  height: 500px;
+  border: 1px solid black;
+}

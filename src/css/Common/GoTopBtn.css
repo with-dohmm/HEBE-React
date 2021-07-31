@@ -1,0 +1,18 @@
+.go-top-btn {
+  position: fixed;
+  bottom: 35px;
+  right: 35px;
+  width: 25px;
+  height: 25px;
+}
+.go-top-btn > i {
+  font-size: 25px;
+  color: rgb(170, 170, 170);
+}
+
+@media only screen and (max-width: 800px) {
+  .go-top-btn {
+    bottom: 20px;
+    right: 20px;
+  }
+}

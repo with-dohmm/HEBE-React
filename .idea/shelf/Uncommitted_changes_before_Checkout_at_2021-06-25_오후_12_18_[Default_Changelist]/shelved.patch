@@ -1,0 +1,259 @@
+Index: src/components/Common/Header.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React, { useState } from 'react';\r\nimport '../../css/Common/Header.css';\r\n\r\nconst Header = () => {\r\n  const [sessionToggle, setSessionToggle] = useState(1);\r\n  const [searchToggle, setSearchToggle] = useState(0);\r\n\r\n  return (\r\n    <div id=\"header\">\r\n      <div id=\"mobileMenu\"><i className=\"fas fa-bars\"></i></div>\r\n      <div id=\"logo\">HEBE</div>\r\n      <div id=\"headerCenter\">\r\n        <div>\r\n          <span><a href=\"/\">Home</a></span>\r\n          <span><a href=\"/todo\">To Do</a></span>\r\n          <span><a href=\"/diary\">My Diray</a></span>\r\n          <span><a href=\"#\">Favorite</a></span>\r\n        </div>\r\n      </div>\r\n      <div id=\"headerRight\">\r\n        <span id=\"myPageBtn\"><a href=\"#\">{sessionToggle === 1 ? 'My Page' : 'Join'}</a></span>\r\n        <span id=\"logoutBtn\"><a href=\"#\">{sessionToggle === 1 ? 'Log out' : 'Log in'}</a></span>\r\n        <i className=\"fas fa-search\" onClick={() => setSearchToggle(searchToggle === 0 ? 1 : 0)}></i>\r\n      </div>\r\n      <div id=\"rightDot\"><i className=\"fas fa-ellipsis-v\"></i></div>\r\n      <div className=\"right-hidden-menu\">\r\n        <div>My Page</div>\r\n        <span></span>\r\n        <div>Log out</div>\r\n      </div>\r\n      <div \r\n        className={(searchToggle === 0 ? 'search-modal-background' : 'search-modal-background display-inline-block')}\r\n        onClick={() => setSearchToggle(searchToggle === 0 ? 1 : 0)}  \r\n      >\r\n      </div>\r\n      <div className={(searchToggle === 0 ? 'search-modal-box' : 'search-modal-box display-inline-block')}>\r\n        <input type=\"text\" placeholder=\"search user\"></input>\r\n        <span>search</span>\r\n        <div className=\"search-modal-profile\">\r\n          <span className=\"search-modal-profileImg\"></span>\r\n          <span className=\"search-modal-profileId\">jun17183</span>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n\r\nexport default Header;
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/components/Common/Header.js b/src/components/Common/Header.js
+--- a/src/components/Common/Header.js	
++++ b/src/components/Common/Header.js	
+@@ -4,10 +4,12 @@
+ const Header = () => {
+   const [sessionToggle, setSessionToggle] = useState(1);
+   const [searchToggle, setSearchToggle] = useState(0);
++  const [leftMenuToggle, setLeftMenuToggle] = useState(0);
++  const [rightMenuToggle, setRightMenuToggle] = useState(0);
+ 
+   return (
+     <div id="header">
+-      <div id="mobileMenu"><i className="fas fa-bars"></i></div>
++      <div id="mobileMenu"><i className="fas fa-bars" onClick={() => {setLeftMenuToggle(leftMenuToggle === 0 ? 1 : 0); setRightMenuToggle(0);}}></i></div>
+       <div id="logo">HEBE</div>
+       <div id="headerCenter">
+         <div>
+@@ -17,14 +19,22 @@
+           <span><a href="#">Favorite</a></span>
+         </div>
+       </div>
++      <div className={(leftMenuToggle === 0 ? 'left-hidden-menu' : 'left-hidden-menu display-inline-block')}>
++        <span><a href="/">Home</a></span>
++        <span><a href="/todo">To Do</a></span>
++        <span><a href="/diary">My Diray</a></span>
++        <span><a href="#">Favorite</a></span>
++      </div>
+       <div id="headerRight">
+         <span id="myPageBtn"><a href="#">{sessionToggle === 1 ? 'My Page' : 'Join'}</a></span>
+         <span id="logoutBtn"><a href="#">{sessionToggle === 1 ? 'Log out' : 'Log in'}</a></span>
+         <i className="fas fa-search" onClick={() => setSearchToggle(searchToggle === 0 ? 1 : 0)}></i>
+       </div>
+-      <div id="rightDot"><i className="fas fa-ellipsis-v"></i></div>
+-      <div className="right-hidden-menu">
++      <div id="rightDot"><i className="fas fa-ellipsis-v" onClick={() => {setRightMenuToggle(rightMenuToggle === 0 ? 1 : 0); setLeftMenuToggle(0);}}></i></div>
++      <div className={(rightMenuToggle === 0 ? 'right-hidden-menu' : 'right-hidden-menu display-inline-block')}>
+         <div>My Page</div>
++        <span></span>
++        <div onClick={() => {setSearchToggle(searchToggle === 0 ? 1 : 0); setRightMenuToggle(0)}}>Search</div>
+         <span></span>
+         <div>Log out</div>
+       </div>
+Index: src/css/Common/Header.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#header {\r\n  display: grid;\r\n  grid-template-columns: 1fr 2fr 1fr;\r\n  padding: 0 4.5%;\r\n  margin-bottom: 25px;\r\n  height: 90px;\r\n  background-color: #ffffff;\r\n  box-shadow: 4px 4px 10px rgb(211, 211, 211);\r\n  font-family: 'GmarketSansBold';\r\n}\r\n#logo {\r\n  height: 40px;\r\n  width: 60px;\r\n  margin: 25px 0;\r\n  font-size: 20px;\r\n  line-height: 45px;\r\n  background: #867ec7;\r\n  background: -webkit-linear-gradient(left, #867ec7, #d57272);\r\n  background:    -moz-linear-gradient(right, #867ec7, #d57272);\r\n  background:      -o-linear-gradient(right, #867ec7, #d57272);\r\n  background:         linear-gradient(to right, #867ec7, #d57272);\r\n  -webkit-background-clip: text;\r\n          background-clip: text;\r\n  color: transparent;\r\n  cursor: pointer;\r\n}\r\n#headerCenter {\r\n  display: flex;\r\n  justify-content: center;\r\n  text-align: center;\r\n  line-height: 89px;\r\n}\r\n#headerCenter > div {\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr 1fr 1fr;\r\n  width: 500px;\r\n  height: 89px;\r\n}\r\n#headerCenter span {\r\n  position: relative;\r\n}\r\n#headerCenter span::after {\r\n  content: \"\"; \r\n  position: absolute; \r\n  bottom: -1px; left: 50%; \r\n  transform: translateX(-50%); \r\n  width: 0; height: 2px; \r\n  background: #867ec7;\r\n  background: -webkit-linear-gradient(left, #867ec7, #d57272);\r\n  background:    -moz-linear-gradient(right, #867ec7, #d57272);\r\n  background:      -o-linear-gradient(right, #867ec7, #d57272);\r\n  background:         linear-gradient(to right, #867ec7, #d57272);\r\n  transition: all .2s ease-out;\r\n}\r\n#headerCenter span:hover::after {\r\n  width: 100%;\r\n}\r\n#headerCenter a {\r\n  display: inline-block;\r\n  position: relative;\r\n  top: 2px;\r\n  height: 100%;\r\n  color: #acacad;\r\n  font-family: 'GmarketSansMedium';\r\n  font-weight: 600;\r\n}\r\n#headerCenter a:hover {\r\n  color: #6e6d74;\r\n}\r\n#headerRight > * {\r\n  float: right;\r\n  position: relative;\r\n  top: 26px;\r\n}\r\n#headerRight > span {\r\n  display: inline-block;\r\n  width: 80px;\r\n}\r\n#logoutBtn {\r\n  height: 40px;\r\n  line-height: 40px;\r\n  margin: 0 0.5vw;\r\n}\r\n#logoutBtn > a {\r\n  color: #acacad;\r\n  font-family: 'GmarketSansMedium';\r\n  font-weight: 600;\r\n}\r\n#myPageBtn {\r\n  padding: 5px 20px 3px 20px;\r\n  border-radius: 30px;\r\n  background: -webkit-linear-gradient(left, #867ec7, #d57272);\r\n  background:    -moz-linear-gradient(right, #867ec7, #d57272);\r\n  background:      -o-linear-gradient(right, #867ec7, #d57272);\r\n  background:         linear-gradient(to right, #867ec7, #d57272);\r\n  line-height: 30px;\r\n  text-align: center;\r\n}\r\n#myPageBtn > a {\r\n  color: white;\r\n  font-family: 'GmarketSansMedium';\r\n  font-size: 15px;\r\n  font-weight: 600;\r\n}\r\n#headerRight > i {\r\n  top: 38px;\r\n  margin-right: 15px;\r\n  color: #acacad;\r\n  cursor: pointer;\r\n}\r\n#rightDot {\r\n  display: none;\r\n}\r\n#rightDot > i {\r\n  position: relative;\r\n  top: 35px;\r\n  float: right;\r\n  font-size: 20px;\r\n  color: #acacad;\r\n  cursor: pointer;\r\n}\r\n.right-hidden-menu {\r\n  display: none;\r\n  position: absolute;\r\n  top: 70px;\r\n  right: 25px;\r\n  width: 140px;\r\n  height: 100px;\r\n  background-color: white;\r\n  box-shadow: 6px 6px 10px rgb(211, 211, 211);\r\n  color: #acacad;\r\n  z-index: 9999;\r\n}\r\n.right-hidden-menu > div {\r\n  height : 49px;\r\n  width: 140px;\r\n  line-height: 50px;\r\n  text-align: center;\r\n}\r\n.right-hidden-menu > div:first-child {\r\n  background: #867ec7;\r\n  background: -webkit-linear-gradient(left, #867ec7, #d57272);\r\n  background:    -moz-linear-gradient(right, #867ec7, #d57272);\r\n  background:      -o-linear-gradient(right, #867ec7, #d57272);\r\n  background:         linear-gradient(to right, #867ec7, #d57272);\r\n  -webkit-background-clip: text;\r\n          background-clip: text;\r\n  color: transparent;\r\n}\r\n.right-hidden-menu > span {\r\n  display: block;\r\n  height : 1px;\r\n  width: 130px;\r\n  margin: auto;\r\n  background-color: #acacad;\r\n}\r\n#mobileMenu {\r\n  display: none;\r\n}\r\n#mobileMenu > i {\r\n  position: relative;\r\n  top: 35px;\r\n  font-size: 20px;\r\n  color: #acacad;\r\n  cursor: pointer;\r\n}\r\n.search-modal-background {\r\n  display: none;\r\n  position: fixed;\r\n  top: 0;\r\n  left: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  background-color: rgba(0, 0, 0, 0.5);\r\n  z-index: 9998;\r\n}\r\n.search-modal-box {\r\n  display: none;\r\n  position: absolute;\r\n  top: 15%;\r\n  left: 50%; \r\n  transform:translateX(-50%);\r\n  width: 40%;\r\n  height: 160px;\r\n  background-color: #ffffff;\r\n  z-index: 9999;\r\n  overflow: hidden;\r\n  user-select: none;\r\n}\r\n.search-modal-box > input {\r\n  width: 63%;\r\n  height: 30px;\r\n  padding: 2px 0 0 10px;\r\n  margin: 30px 10px 0 10%;\r\n  border: 1px solid #bbbbbb;\r\n  border-radius: 10px;\r\n  outline: none;\r\n  color: #7d7c83;\r\n}\r\n.search-modal-box > span {\r\n  display: inline-block;\r\n  position: relative;\r\n  top: -2px;\r\n  width: 80px;\r\n  height: 32px;\r\n  background: linear-gradient(to right, #867ec7, #d57272) ;\r\n  border-radius: 15px;\r\n  color: #fcfcfc !important;\r\n  font-family: 'GmarketSansMedium';\r\n  font-size: 15px;\r\n  text-align: center;\r\n  line-height: 32px;\r\n}\r\n.search-modal-profile {\r\n  width: 80%;\r\n  height: 50px;\r\n  margin: 15px 0 0 10%;\r\n  line-height: 50px;\r\n}\r\n.search-modal-profileImg {\r\n  display: inline-block;\r\n  height: 30px;\r\n  width: 30px;\r\n  margin: 10px 10px;\r\n  background-color: #4977b3;\r\n  border-radius: 40px;\r\n}\r\n.search-modal-profileId {\r\n  display: inline-block;\r\n  position: relative;\r\n  top: -20px;\r\n  left: 10px;\r\n  width: calc(80% - 40px);\r\n  font-family: 'GmarketSansMedium';\r\n}\r\n.display-inline-block {\r\n  display: inline-block;\r\n}\r\n\r\n\r\n@media only screen and (max-width: 1350px) {\r\n  #header {\r\n    grid-template-columns: auto 614px 307px;\r\n  }\r\n  .search-modal-box > input {\r\n    width: 62%;\r\n  }\r\n}\r\n@media only screen and (max-width: 1220px) {\r\n  .search-modal-box > input {\r\n    width: 58%;\r\n  }\r\n}\r\n@media only screen and (max-width: 1150px) {\r\n  #header {\r\n    grid-template-columns: auto 614px auto;\r\n  }\r\n}\r\n@media only screen and (max-width: 1080px) {\r\n  .search-modal-box {\r\n    width: 425.28px;\r\n  }\r\n  \r\n}\r\n@media only screen and (max-width: 1025px) {\r\n  #header {\r\n    grid-template-columns: 1fr 614px 1fr;\r\n  }\r\n  #headerRight {\r\n    display: none;\r\n  }\r\n  #rightDot {\r\n    display: inline-block;\r\n  }\r\n}\r\n@media only screen and (max-width: 800px) {\r\n  #header {\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n  }\r\n  #headerCenter {\r\n    display: none;\r\n  }\r\n  #logo {\r\n    justify-self: center;\r\n  }\r\n  #mobileMenu {\r\n    display: inline-block;\r\n  }\r\n}\r\n\r\n 
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/css/Common/Header.css b/src/css/Common/Header.css
+--- a/src/css/Common/Header.css	
++++ b/src/css/Common/Header.css	
+@@ -1,3 +1,6 @@
++* {
++  user-select: none;
++}
+ #header {
+   display: grid;
+   grid-template-columns: 1fr 2fr 1fr;
+@@ -119,41 +122,6 @@
+   color: #acacad;
+   cursor: pointer;
+ }
+-.right-hidden-menu {
+-  display: none;
+-  position: absolute;
+-  top: 70px;
+-  right: 25px;
+-  width: 140px;
+-  height: 100px;
+-  background-color: white;
+-  box-shadow: 6px 6px 10px rgb(211, 211, 211);
+-  color: #acacad;
+-  z-index: 9999;
+-}
+-.right-hidden-menu > div {
+-  height : 49px;
+-  width: 140px;
+-  line-height: 50px;
+-  text-align: center;
+-}
+-.right-hidden-menu > div:first-child {
+-  background: #867ec7;
+-  background: -webkit-linear-gradient(left, #867ec7, #d57272);
+-  background:    -moz-linear-gradient(right, #867ec7, #d57272);
+-  background:      -o-linear-gradient(right, #867ec7, #d57272);
+-  background:         linear-gradient(to right, #867ec7, #d57272);
+-  -webkit-background-clip: text;
+-          background-clip: text;
+-  color: transparent;
+-}
+-.right-hidden-menu > span {
+-  display: block;
+-  height : 1px;
+-  width: 130px;
+-  margin: auto;
+-  background-color: #acacad;
+-}
+ #mobileMenu {
+   display: none;
+ }
+@@ -233,6 +201,77 @@
+   width: calc(80% - 40px);
+   font-family: 'GmarketSansMedium';
+ }
++.left-hidden-menu {
++  display: none;
++  position: absolute;
++  top: 91px;
++  left: 0;
++  width: calc(100vw - 16.8px);
++  background-color: white;
++  box-shadow: 4px 4px 10px rgb(211, 211, 211);
++  color: #8b8b8b;
++  z-index: 9999;
++}
++.left-hidden-menu > span {
++  display: block;
++  height: 40px;
++  border-bottom: 1px solid #acacad;
++  text-align: center;
++  line-height: 40px;
++  
++}
++.left-hidden-menu > span:last-child {
++  border: none;
++}
++.left-hidden-menu > span > a {
++  color: #acacad;
++}
++.left-hidden-menu > span > a:hover {
++  background: #867ec7;
++  background: -webkit-linear-gradient(left, #867ec7, #d57272);
++  background:    -moz-linear-gradient(right, #867ec7, #d57272);
++  background:      -o-linear-gradient(right, #867ec7, #d57272);
++  background:         linear-gradient(to right, #867ec7, #d57272);
++  -webkit-background-clip: text;
++          background-clip: text;
++  color: transparent;
++}
++.right-hidden-menu {
++  display: none;
++  position: absolute;
++  top: 70px;
++  right: 25px;
++  width: 140px;
++  height: 148px;
++  background-color: white;
++  box-shadow: 6px 6px 10px rgb(211, 211, 211);
++  color: #8b8b8b;
++  z-index: 9999;
++}
++.right-hidden-menu > div {
++  height : 48px;
++  width: 140px;
++  line-height: 50px;
++  text-align: center;
++  cursor: pointer;
++}
++.right-hidden-menu > div:first-child {
++  background: #867ec7;
++  background: -webkit-linear-gradient(left, #867ec7, #d57272);
++  background:    -moz-linear-gradient(right, #867ec7, #d57272);
++  background:      -o-linear-gradient(right, #867ec7, #d57272);
++  background:         linear-gradient(to right, #867ec7, #d57272);
++  -webkit-background-clip: text;
++          background-clip: text;
++  color: transparent;
++}
++.right-hidden-menu > span {
++  display: block;
++  height : 1px;
++  width: 130px;
++  margin: auto;
++  background-color: #acacad;
++}
+ .display-inline-block {
+   display: inline-block;
+ }
+@@ -287,5 +326,15 @@
+     display: inline-block;
+   }
+ }
++@media only screen and (min-width: 1025px) {
++  .right-hidden-menu {
++    display: none;
++  }
++}
++@media only screen and (min-width: 800px) {
++  .left-hidden-menu {
++    display: none;
++  }
++}
+ 
+  
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"3e0e379e-713c-4f8d-840e-a79639c85424\" name=\"Default Changelist\" comment=\"apiAxios update\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1u3Zo7QDsMCUimmrylxvySST7zv\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"ASKED_ADD_EXTERNAL_FILES\" value=\"true\" />\r\n    <property name=\"ASKED_SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"aspect.path.notification.shown\" value=\"true\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$\" />\r\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\r\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\r\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\git-clone\\HEBE-React\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"3e0e379e-713c-4f8d-840e-a79639c85424\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1623896405272</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1623896405272</updated>\r\n      <workItem from=\"1623896407212\" duration=\"170000\" />\r\n      <workItem from=\"1624345771253\" duration=\"711000\" />\r\n      <workItem from=\"1624450192351\" duration=\"721000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Database connected\">\r\n      <created>1624345806266</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1624345806266</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"apiAxios update\">\r\n      <created>1624450311663</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1624450311663</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <MESSAGE value=\"Database connected\" />\r\n    <MESSAGE value=\"apiAxios update\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"apiAxios update\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -1,8 +1,10 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ChangeListManager">
+-    <list default="true" id="3e0e379e-713c-4f8d-840e-a79639c85424" name="Default Changelist" comment="apiAxios update">
++    <list default="true" id="3e0e379e-713c-4f8d-840e-a79639c85424" name="Default Changelist" comment="header 수정">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/components/Common/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common/Header.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/css/Common/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/Common/Header.css" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -49,6 +51,7 @@
+       <workItem from="1623896407212" duration="170000" />
+       <workItem from="1624345771253" duration="711000" />
+       <workItem from="1624450192351" duration="721000" />
++      <workItem from="1624580067891" duration="4258000" />
+     </task>
+     <task id="LOCAL-00001" summary="Database connected">
+       <created>1624345806266</created>
+@@ -64,7 +67,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1624450311663</updated>
+     </task>
+-    <option name="localTasksCounter" value="3" />
++    <task id="LOCAL-00003" summary="header 수정">
++      <created>1624580121652</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1624580121652</updated>
++    </task>
++    <option name="localTasksCounter" value="4" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -86,6 +96,7 @@
+     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+     <MESSAGE value="Database connected" />
+     <MESSAGE value="apiAxios update" />
+-    <option name="LAST_COMMIT_MESSAGE" value="apiAxios update" />
++    <MESSAGE value="header 수정" />
++    <option name="LAST_COMMIT_MESSAGE" value="header 수정" />
+   </component>
+ </project>
+\ No newline at end of file

@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="3e0e379e-713c-4f8d-840e-a79639c85424" name="Default Changelist" comment="create login, join, update header">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+    <list default="true" id="3e0e379e-713c-4f8d-840e-a79639c85424" name="Default Changelist" comment="add diary">
+      <change beforePath="$PROJECT_DIR$/src/components/Diary/TextEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Diary/TextEditor.js" afterDir="false" />
+>>>>>>> master
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,7 +17,11 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
+<<<<<<< HEAD
         <entry key="$PROJECT_DIR$" value="master" />
+=======
+        <entry key="$PROJECT_DIR$" value="hongjun" />
+>>>>>>> master
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -26,14 +35,13 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../hebe-spring" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -52,24 +60,30 @@
       <option name="presentableId" value="Default" />
       <updated>1623896405272</updated>
       <workItem from="1623896407212" duration="170000" />
+<<<<<<< HEAD
       <workItem from="1624345771253" duration="711000" />
       <workItem from="1624450192351" duration="721000" />
       <workItem from="1624589220827" duration="77000" />
       <workItem from="1624589912370" duration="1490000" />
+=======
+      <workItem from="1624592323739" duration="1439000" />
+      <workItem from="1625450532995" duration="3399000" />
+      <workItem from="1625531181171" duration="788000" />
+>>>>>>> master
     </task>
-    <task id="LOCAL-00001" summary="Database connected">
-      <created>1624345806266</created>
+    <task id="LOCAL-00001" summary="search, my diary, write">
+      <created>1625450601439</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1624345806266</updated>
+      <updated>1625450601439</updated>
     </task>
-    <task id="LOCAL-00002" summary="apiAxios update">
-      <created>1624450311663</created>
+    <task id="LOCAL-00002" summary="add diary">
+      <created>1625531264640</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1624450311663</updated>
+      <updated>1625531264641</updated>
     </task>
     <task id="LOCAL-00003" summary="create login, join, update header">
       <created>1624590065438</created>
@@ -97,10 +111,16 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+<<<<<<< HEAD
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Database connected" />
     <MESSAGE value="apiAxios update" />
     <MESSAGE value="create login, join, update header" />
     <option name="LAST_COMMIT_MESSAGE" value="create login, join, update header" />
+=======
+    <MESSAGE value="search, my diary, write" />
+    <MESSAGE value="add diary" />
+    <option name="LAST_COMMIT_MESSAGE" value="add diary" />
+>>>>>>> master
   </component>
 </project>
