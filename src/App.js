@@ -11,6 +11,7 @@ import MyFav from './components/MyFav/MyFav';
 import MyPage from './components/MyPage/MyPage';
 import Join from './components/MyPage/Join';
 import Login from './components/MyPage/Login';
+import './css/Common/Common.css';
 
 const isLogin = false;
 

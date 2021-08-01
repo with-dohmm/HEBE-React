@@ -1,4 +1,5 @@
 * { user-select: none; }
+
 .header {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
@@ -7,7 +8,6 @@
   height: 90px;
   background-color: #ffffff;
   box-shadow: 4px 4px 10px rgb(211, 211, 211);
-  font-family: 'GmarketSansBold';
 }
 .logo > a {
   display: block;
@@ -25,6 +25,7 @@
           background-clip: text;
   color: transparent;
   cursor: pointer;
+  font-family: 'GmarketSansBold';
 }
 .header-center {
   display: flex;
@@ -63,7 +64,6 @@
   top: 2px;
   height: 100%;
   color: #acacad;
-  font-family: 'GmarketSansMedium';
   font-weight: 600;
 }
 .header-center a:hover {
@@ -148,6 +148,7 @@
 .right-hidden-menu > div:hover {
   color: #6e6d74;
 }
+
 .right-hidden-menu > div:first-child {
   background: #867ec7;
   background: -webkit-linear-gradient(left, #867ec7, #d57272);
@@ -229,6 +230,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 9998;
 }
+
 .search-modal-box {
   display: none;
   position: absolute;
@@ -279,6 +281,7 @@
   line-height: 32px;
   cursor: pointer;
 }
+
 .search-modal-profile {
   width: 80%;
   height: 100px;
@@ -290,6 +293,7 @@
 .search-modal-profile:last-child {
   border-bottom: 0px;
 }
+
 .search-modal-profileImg {
   display: block;
   float: left;
@@ -327,11 +331,8 @@
 .display-inline-block {
   display: inline-block;
 }
-.hidden {
-  display: none;
-}
 
-
+/* 반응형 */
 @media only screen and (max-width: 1350px) {
   .header {
     grid-template-columns: auto 614px 307px;
