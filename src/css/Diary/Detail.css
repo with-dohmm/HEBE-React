@@ -1,6 +1,8 @@
 .detail {
+  position: relative;
+  top: 115px;
   width: 900px;
-  margin: 35px auto;
+  margin: auto;
   padding: 25px 35px 15px 35px;
   background-color: white;
   box-shadow: 3px 3px 5px 1px rgb(211, 211, 211)
@@ -26,11 +28,17 @@
   font-size: 14px;
   color: #acacad;
 }
-.detail-title-btn span {
+.detail-title-btn span:first-child {
   margin-right: 15px;
 }
 .detail-title-btn span:not(:first-child) {
   cursor: pointer;
+}
+.top-heart-btn {
+  margin-right: 0;
+}
+.update-delete-btn {
+  margin-right: 15px;
 }
 .detail-content {
   min-height: 300px;
@@ -69,10 +77,10 @@
 .detail-reply-top > div {
   font-size: 20px;
 }
-.detail-reply-top > div:first-child {
+.detail-reply-top > .detail-reply-text {
   float: left;
 }
-.detail-reply-top > div:last-child {
+.detail-reply-top > .detail-reply-heart {
   float: right;
   cursor: pointer;
 }

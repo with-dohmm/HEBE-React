@@ -1,7 +1,13 @@
-.page-title {
+.my-fav {
+  position: relative;
+  top: 115px;
   width: 85%;
-  margin: 0 auto 15px auto;
-  padding: 1%;
+  margin: 0 auto;
+  padding: 1% 7.5%;
+}
+.page-title {
+  margin: 0 auto 30px auto;
+  padding: 0 25px;
 }
 .page-title > span {
   display: inline-block;

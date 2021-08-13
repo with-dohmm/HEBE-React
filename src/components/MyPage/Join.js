@@ -1,9 +1,9 @@
 import axios from 'axios';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './../../css/MyPage/Join.css';
 import useCountDown from 'react-countdown-hook';
 
-const Join = () => {
+const Join = ({ openJoinModal, setOpenJoinModal }) => {
     const joinWrap = useRef();
     const joinCloseBtn = useRef();
     const joinEmailInput = useRef();
@@ -24,7 +24,7 @@ const Join = () => {
     const passwordWarn = useRef();
     
     const sites = [
-        { id: 1, site: 'google.com' },
+        { id: 1, site: 'gmail.com' },
         { id: 2, site: 'naver.com' },
         { id: 3, site: 'daum.net' },
         { id: 4, site: '직접 입력' }
@@ -38,8 +38,9 @@ const Join = () => {
 
     // 모달창 닫기
     const joinModalClose = () => {
-        if(joinWrap.current) {
-            joinWrap.current.classList.add('hidden');
+        setOpenJoinModal(false);
+        
+        if (joinWrap.current) {
             joinEmailInputArea.current.classList.remove('hidden');
             emailCheckBtn.current.classList.remove('hidden');
             joinEmailAuthArea.current.classList.add('hidden');
@@ -60,7 +61,7 @@ const Join = () => {
     const joinEmailValue = (e) => {
         console.log('value : ' + e.target.value);
 
-        if(e.target.value !== sites[3].site) {
+        if (e.target.value !== sites[3].site) {
             joinEmailSite.current.classList.add('hidden');
             setEmailSite(e.target.value);
             console.log('emailSite : ' + emailSite);
@@ -165,7 +166,8 @@ const Join = () => {
     };
     
     return (
-        <div id="joinWrap" ref={joinWrap} className="join-wrap hidden">
+        openJoinModal ? (
+        <div id="joinWrap" ref={joinWrap} className="join-wrap">
             <div className="join-modal">
                 <div ref={joinCloseBtn} className="join-modal-close" onClick={joinModalClose}>&times;</div>
                 <h1 className="join-modal-title">JOIN</h1>
@@ -222,7 +224,7 @@ const Join = () => {
                 </div>
             </div>
             <div className="join-wrap-back" onClick={ joinModalClose }></div>
-        </div>
+        </div>) : <></>
     );
 }
 

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import UpdateEditor from './UpdateEditor';
 import '../../css/Diary/Write.css';
 
 const Update = (props) => {
   return (
-    <div>
+    <div className="update-wrap">
       <div className="editor">
         <UpdateEditor iboard={props.match.params.iboard}/>
       </div>

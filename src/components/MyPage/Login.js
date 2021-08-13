@@ -1,38 +1,33 @@
-import React, { useState, useContext, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import axios from 'axios';
 import './../../css/MyPage/Login.css';
-import { LoginState } from './../../App';
 
-const Login = (props) => {
-    const [loginUser, setLoginUser] = useState({username: 'sue', password: '1234'});
-    const {state, dispatch} = useContext(LoginState);
-    const loginWrap = useRef();
-
-
+const Login = ({ openLoginModal, setOpenLoginModal }) => {
+    const [loginUser, setLoginUser] = useState({username: '', password: ''});
+    let loginUserInfo = { iuser: 0 };
+    
     const loginModalClose = () => {
-        const loginWrapEl = loginWrap.current; 
-        if(loginWrapEl) {
-            loginWrapEl.classList.add('hidden'); 
-        }
+        setOpenLoginModal(false);
     }
 
     // 로그인
     const loginHandler = () => {
         axios.post('/api/user/login', loginUser)
         .then( (res) => {
-            const userInfo = {
+            loginUserInfo = {
+                isLogin: true,
                 iuser: res.data.iuser, 
                 username: res.data.username, 
                 nickname: res.data.nickname, 
-                profile: res.data.profile, 
+                profileimg: res.data.profileimg, 
                 introduction: res.data.introduction
             };
 
-            window.localStorage.setItem('loginUser', JSON.stringify(userInfo));
-
-            dispatch({type: 'login', value: 'true'});
+            window.localStorage.setItem('loginUser', JSON.stringify(loginUserInfo));
 
             loginModalClose();
+
+            window.location.href = '/';
 
             console.log("username : " + loginUser.username + ', password : ' + loginUser.password);
             console.log("res.data.nickname : " + res.data.nickname);
@@ -50,9 +45,10 @@ const Login = (props) => {
     }
 
     return (
-        <div id="loginWrap" ref={loginWrap} className="login-wrap hidden">
+        openLoginModal ? (
+        <div id="loginWrap" className="login-wrap">
             <div className="login-modal">
-            <div id="loginCloseBtn" className="login-modal-close" onClick={loginModalClose}>&times;</div>
+            <div id="loginCloseBtn" className="login-modal-close" onClick={ loginModalClose }>&times;</div>
 
                 <h1 className="login-modal-title">Login</h1>
 
@@ -63,7 +59,7 @@ const Login = (props) => {
                     <input type="password" id="loginPwInput" onKeyPress={ enterLogin } onChange={ (e) => setLoginUser({password: e.target.value, username: loginUser.username}) } 
                     className="login-input" placeholder="패스워드를 입력해주세요." />
                     
-                    <div className="login-modal-submit" onClick={loginHandler}>로그인</div>
+                    <div className="login-modal-submit" onClick={ loginHandler }>로그인</div>
                 </div>
                 
                 <div className="login-join-modal">
@@ -73,13 +69,13 @@ const Login = (props) => {
                 </div>
 
                 <div className="login-api-area">
-                    <img alt="google login" src="/img/loginApi/googleLogo.svg" />
-                    <img alt="kakao login" src="/img/loginApi/kakaoLogo.svg" />
-                    <img alt="naver login" src="/img/loginApi/naverLogo.svg" />
+                    <img alt="google login" src="/img/common/googleLogo.svg" />
+                    <img alt="kakao login" src="/img/common/kakaoLogo.svg" />
+                    <img alt="naver login" src="/img/common/naverLogo.svg" />
                 </div>
             </div>
             <div className="login-wrap-back" onClick={ loginModalClose }></div>
-        </div>
+        </div>) : <></>
     );
 }
 

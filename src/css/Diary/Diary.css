@@ -1,15 +1,16 @@
 .diary {
-  width: 100%;
-  padding: 0;
-  margin: 0;
-}
-.page-title {
+  position: relative;
+  top: 115px;
   width: 85%;
-  height: 38.4px;
-  margin: 0 auto 15px auto;
-  padding: 1%;
+  margin: 0 auto;
+  padding: 1% 7.5%;
 }
-.page-title > span:first-child {
+.diary-title-wrap {
+  margin: 0 auto 30px auto;
+  padding: 0 25px;
+  height: 45.6px;
+}
+.diary-title-wrap > span {
   display: block;
   float: left;
   font-family: 'GmarketSansMedium';
@@ -20,10 +21,10 @@
   background:      -o-linear-gradient(right, #867ec7, #d57272);
   background:         linear-gradient(to right, #867ec7, #d57272);
   -webkit-background-clip: text;
-  background-clip: text;
+          background-clip: text;
   color: transparent;
 }
-.page-title > img {
+.diary-title-wrap > img {
   position: relative;
   top: 5px;
   float: left;
@@ -31,18 +32,4 @@
   height: 25px;
   object-fit: cover;
   cursor: pointer;
-}
-.card-section {
-  display: inline-grid;
-  grid-template-columns: repeat(auto-fill, minmax(323px, auto));
-  width: 60%;
-  justify-content: center;
-}
-.calender-box {
-  position: relative;
-  right: 7%;
-  float: right;
-  width: 36%;
-  height: 500px;
-  border: 1px solid black;
 }

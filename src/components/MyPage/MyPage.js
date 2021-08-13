@@ -1,13 +1,22 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
+import './../../css/MyPage/MyPage.css';
+import { LoginInfo } from './../../App';
 
 const MyPage = () => {
-    let loginUserInfo = window.localStorage.getItem('loginUser');
-    loginUserInfo = JSON.parse(loginUserInfo);
-    console.log('myPage user' + loginUserInfo.username);
+    const loginUserInfo = useContext(LoginInfo);
     return (
-        <div>
-            <h1>my Page</h1>
-            <h2>{loginUserInfo.username}</h2>
+        <div className="myPage-wrap">
+            <div className="myPage-profile-area">
+                프로필 영역
+            </div>
+
+            <div className="myPage-cate-area">
+                카테고리 영역
+            </div>
+
+            <div className="myPage-views-area">
+                뷰 영역
+            </div>
         </div>
     );
 }
