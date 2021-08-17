@@ -32,6 +32,13 @@ const TextEditor = () => {
     .catch((error) => {
       console.log(error);
     })
+
+    return () => {
+      console.log('useEffect didwillunmount');
+      if (finish === 0) {
+        apiCancel();
+      }
+    }
   }, []);
 
   // 글쓰기 작성 완료
@@ -128,13 +135,6 @@ const TextEditor = () => {
     })
   }
 
-  
-  // 뒤로가기 시 자동 작성 취소
-  window.onbeforeunload = () => {
-    if (finish === 0) {
-      apiCancel();
-    }
-  }
 
   return (
     <div id="textEditor">

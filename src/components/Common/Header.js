@@ -30,10 +30,6 @@ const Header = ({ setOpenLoginModal, setOpenJoinModal, leftMenuToggle, rightMenu
     }
   }
 
-  // 반응형 메뉴 버튼 이벤트 활성화
-  // useRef로 변경하기
-  
-
   // 검색창 input value 초기화
   const searchReset = () => {
     searchInput.current.value = '';
@@ -93,6 +89,7 @@ const Header = ({ setOpenLoginModal, setOpenJoinModal, leftMenuToggle, rightMenu
 
   return (
     <div className="header">
+      {/* 왼쪽 반응형 메뉴 아이콘 */}
       <div className="mobile-menu">
         <i 
           className="fas fa-bars" 
@@ -100,7 +97,11 @@ const Header = ({ setOpenLoginModal, setOpenJoinModal, leftMenuToggle, rightMenu
         }>
         </i>
       </div>
+
+      {/* 로고 */}
       <div className="logo"><Link to="/">HEBE</Link></div>
+
+      {/* 가운데 메뉴 */}
       <div className="header-center">
         <div>
           {loginUserInfo.isLogin 
@@ -119,6 +120,7 @@ const Header = ({ setOpenLoginModal, setOpenJoinModal, leftMenuToggle, rightMenu
         </div>
       </div>
 
+      {/* 왼쪽 반응형 메뉴 */}
       {leftMenuToggle 
       ? <div 
           className="left-hidden-menu"
@@ -140,6 +142,7 @@ const Header = ({ setOpenLoginModal, setOpenJoinModal, leftMenuToggle, rightMenu
         </div> 
       : <></>}
 
+      {/* 오른쪽 메뉴 */}
       <div className="header-right">
         {loginUserInfo.isLogin 
         ? <>
@@ -154,6 +157,7 @@ const Header = ({ setOpenLoginModal, setOpenJoinModal, leftMenuToggle, rightMenu
         <i className="fas fa-search" onClick={() => setSearchToggle(searchToggle === 0 ? 1 : 0)}></i>
       </div>
 
+      {/* 오른쪽 반응형 메뉴 아이콘 */}
       <div className="right-dot">
         <i 
           className="fas fa-ellipsis-v" 
@@ -162,6 +166,7 @@ const Header = ({ setOpenLoginModal, setOpenJoinModal, leftMenuToggle, rightMenu
         </i>
       </div>
 
+      {/* 오른쪽 반응형 메뉴 */}
       {rightMenuToggle
       ? <div 
           className='right-hidden-menu'
@@ -185,6 +190,7 @@ const Header = ({ setOpenLoginModal, setOpenJoinModal, leftMenuToggle, rightMenu
         </div>
       : <></>}
 
+      {/* 검색 모달창 뒷 배경 */}
       <div 
         className={(searchToggle === 0 ? 'search-modal-background' : 'search-modal-background display-inline-block')}
         onClick={() => {
@@ -195,6 +201,8 @@ const Header = ({ setOpenLoginModal, setOpenJoinModal, leftMenuToggle, rightMenu
         }  
       >
       </div>
+
+      {/* 검색 모달창 */}
       <div className={(searchToggle === 0 ? 'search-modal-box' : 'search-modal-box display-inline-block')}>
         <input 
           ref={searchInput}

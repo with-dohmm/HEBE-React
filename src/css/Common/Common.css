@@ -12,6 +12,7 @@
   font-style: normal;
 }
 
+
 * {
   font-family: 'GmarketSansMedium';
   -ms-user-select: none;
@@ -39,3 +40,7 @@ a {
 .hidden { display: none !important; }
 
 .display-inline-block { display: inline-block; }
+
+.app {
+  height: 0;
+}

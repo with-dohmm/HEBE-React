@@ -142,8 +142,8 @@ const Detail = (props) => {
   }
 
   // 댓글 리스트
-  const cmtList = cmtData.map((cmt) => 
-    <div className={`cmt-item cmt-${cmt.iboard}-${cmt.icmt}`}>
+  const cmtList = cmtData.map((cmt, index) => 
+    <div key={index} className={`cmt-item cmt-${cmt.iboard}-${cmt.icmt}`}>
       <div className="cmt-item-top">
         <img src={process.env.PUBLIC_URL + cmt.profileimg}></img>
         <div className="cmt-item-top-profile">
