@@ -1,7 +1,12 @@
+.writw-wrap, .update-wrap {
+  padding-bottom: 30px;
+}
 .editor {
+  position: relative;
+  top: 115px;
   width: 900px;
   min-height: 700px;
-  margin: 35px auto;
+  margin: 0 auto 30px auto;
   background-color: white;
   box-shadow: 3px 3px 5px 1px rgb(211, 211, 211)
              ,-3px 3px 5px 1px rgb(211, 211, 211);
@@ -86,4 +91,8 @@
 }
 .visible {
   visibility: visible;
+}
+
+.rdw-dropdown-selectedtext, .rdw-dropdown-selectedtext {
+  z-index: 0;
 }

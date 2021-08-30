@@ -1,13 +1,13 @@
 .content {
+  position: relative;
+  top: 115px;
   width: 85%;
   padding: 1% 7.5%;
 }
-
 .content-header {
   margin-bottom: 30px;
   padding: 0 25px;
 }
-
 .list-title {
   font-family: 'GmarketSansMedium';
   font-size: 30px;
@@ -20,7 +20,6 @@
           background-clip: text;
   color: transparent;
 }
-
 .recent-list-btn, .popular-list-btn {
   float: right;
   position: relative;
@@ -32,7 +31,6 @@
   cursor: pointer;
   z-index: 5;
 }
-
 .btn-clicked {
   background: #867ec7;
   background: -webkit-linear-gradient(left, #867ec7, #d57272);
@@ -43,15 +41,8 @@
           background-clip: text;
   color: transparent;
 }
-
 .btn-no-clicked {
   color: #acacad;
-}
-
-.item-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(323px, auto));
-  justify-content: center;
 }
 
 @media only screen and (max-width: 550px) {
@@ -60,19 +51,9 @@
     text-align: center;
     font-size: 20px; 
   }
-
   .recent-list-btn, .popular-list-btn {
     position: relative;
     right: 126px;
     margin-left: 8px;
   }
-  
-  .item-list {
-    margin-top: 60px;
-  }
-}
-
-/* 스크롤바 */
-body::-webkit-scrollbar {
-  display: none;
 }

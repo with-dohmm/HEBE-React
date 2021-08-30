@@ -2,13 +2,19 @@
 
 .header {
   display: grid;
+  position: fixed;
+  top: 0;
   grid-template-columns: 1fr 2fr 1fr;
   padding: 0 4.5%;
   margin-bottom: 25px;
+  width: 91%;
   height: 90px;
   background-color: #ffffff;
   box-shadow: 4px 4px 10px rgb(211, 211, 211);
+  z-index: 8;
 }
+
+/* 로고 */
 .logo > a {
   display: block;
   height: 40px;
@@ -27,6 +33,8 @@
   cursor: pointer;
   font-family: 'GmarketSansBold';
 }
+
+/* 가운데 메뉴 */
 .header-center {
   display: flex;
   justify-content: center;
@@ -69,6 +77,8 @@
 .header-center a:hover {
   color: #6e6d74;
 }
+
+/* 메뉴 오른쪽 */
 .header-right > * {
   float: right;
   position: relative;
@@ -78,8 +88,6 @@
   display: inline-block;
   width: 80px;
 }
-
- /*  */
 #logoutBtn {
   height: 40px;
   line-height: 40px;
@@ -88,15 +96,13 @@
   font-weight: 600;
   cursor: pointer;
 }
-
- /*  */
 #myPageBtn {
   padding: 5px 20px 3px 20px;
-  border-radius: 30px;
   background: -webkit-linear-gradient(left, #867ec7, #d57272);
   background:    -moz-linear-gradient(right, #867ec7, #d57272);
   background:      -o-linear-gradient(right, #867ec7, #d57272);
   background:         linear-gradient(to right, #867ec7, #d57272);
+  border-radius: 30px;
   line-height: 30px;
   text-align: center;
   color: white;
@@ -104,8 +110,9 @@
   font-weight: 600;
   cursor: pointer;
 }
-
-
+#myPageBtn > * {
+  color: white;
+}
 .header-right > i {
   top: 38px;
   margin-right: 15px;
@@ -113,10 +120,10 @@
   cursor: pointer;
 }
 
+/* 메뉴 오른쪽 반응형 */
 .right-dot {
   display: none;
 }
-
 .right-dot > i {
   position: relative;
   top: 35px;
@@ -125,9 +132,8 @@
   color: #acacad;
   cursor: pointer;
 }
-
 .right-hidden-menu {
-  display: none;
+  display: inline-block;
   position: absolute;
   top: 70px;
   right: 25px;
@@ -145,10 +151,9 @@
   text-align: center;
   cursor: pointer;
 }
-.right-hidden-menu > div:hover {
-  color: #6e6d74;
+.right-hidden-menu > div {
+  color: #949494
 }
-
 .right-hidden-menu > div:first-child {
   background: #867ec7;
   background: -webkit-linear-gradient(left, #867ec7, #d57272);
@@ -159,7 +164,7 @@
           background-clip: text;
   color: transparent;
 }
-.right-hidden-menu > div:first-child:hover {
+.right-hidden-menu > div:hover, .right-hidden-menu a:hover {
   position: relative;
   top: 1px;
   background: -webkit-linear-gradient(left, #867ec7, #d57272);
@@ -175,6 +180,8 @@
   margin: auto;
   background-color: #acacad;
 }
+
+/* 메뉴 왼쪽 반응형 */
 .mobile-menu {
   display: none;
 }
@@ -186,9 +193,8 @@
   cursor: pointer;
 }
 .left-hidden-menu {
-  display: none;
+  display: inline-block;
   position: absolute;
-  /* width: calc(100vw - 16.8px); */
   width: 100vw;
   top: 92px;
   left: 0;
@@ -200,9 +206,10 @@
   display: block;
   width: 100%;
   height: 35px;
-  border-bottom: 1px solid #acacad;
+  border-bottom: 1px solid #949494;
   text-align: center;
   line-height: 35px;
+  color: #949494;
 }
 .left-hidden-menu > span:last-child {
   border: none;
@@ -211,7 +218,14 @@
   display: block;
   width: 100%;
   height: 100%;
-  color: #a0a0a0;
+  color: #949494;
+}
+.left-hidden-menu > span:hover {
+  background: -webkit-linear-gradient(left, #867ec7, #d57272);
+  background:    -moz-linear-gradient(right, #867ec7, #d57272);
+  background:      -o-linear-gradient(right, #867ec7, #d57272);
+  background:         linear-gradient(to right, #867ec7, #d57272);
+  color: white;
 }
 .left-hidden-menu > span > a:hover {
   background: -webkit-linear-gradient(left, #867ec7, #d57272);
@@ -220,6 +234,8 @@
   background:         linear-gradient(to right, #867ec7, #d57272);
   color: white;
 }
+
+/* 검색 */
 .search-modal-background {
   display: none;
   position: fixed;
@@ -228,20 +244,19 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 9998;
+  z-index: 101;
 }
-
 .search-modal-box {
   display: none;
   position: absolute;
-  top: 15%;
+  top: 20vh;
   left: 50%; 
   transform:translateX(-50%);
-  padding-bottom: 25px;
-  min-height: 80px;
+  padding-bottom: 5px;
+  min-height: 95px;
   width: 40%;
   background-color: #ffffff;
-  z-index: 9999;
+  z-index: 102;
   overflow: hidden;
   user-select: none;
 }
@@ -259,7 +274,6 @@
   border: 1px solid #867ec7;
   border-radius: 10px;
 }
-
 .search-modal-box > i {
   display: inline-block;
   margin-left: 5px;
@@ -281,10 +295,9 @@
   line-height: 32px;
   cursor: pointer;
 }
-
 .search-modal-profile {
   width: 80%;
-  height: 100px;
+  height: 80px;
   margin: 5px 0 0 10%;
   padding-bottom: 10px;
   border-bottom: 1px solid rgb(182, 182, 182);
@@ -293,12 +306,16 @@
 .search-modal-profile:last-child {
   border-bottom: 0px;
 }
-
-.search-modal-profileImg {
+.search-modal-profile > a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.search-modal-profileimg {
   display: block;
   float: left;
-  height: 80px;
-  width: 80px;
+  height: 60px;
+  width: 60px;
   margin: 10px 10px;
   border-radius: 40px;
 }
@@ -319,17 +336,23 @@
   white-space:nowrap;
 }
 .search-modal-profileContent > span:first-child {
-  top: calc(50% - 25px);
-  font-size: 18px;
+  top: calc(50% - 22px);
+  font-size: 16px;
   color: rgb(112, 112, 112);
 }
 .search-modal-profileContent > span:last-child {
-  top: calc(50% - 20px);
-  font-size: 14px;
+  top: calc(50% - 17px);
+  font-size: 13px;
   color:rgb(114, 114, 114);
 }
-.display-inline-block {
-  display: inline-block;
+.search-modal-noResult {
+  width: 80%;
+  height: 40px;
+  margin: 5px 0 0 10%;
+  padding-left: 10px;
+  padding-bottom: 15px;
+  line-height: 40px;
+  cursor: pointer;
 }
 
 /* 반응형 */

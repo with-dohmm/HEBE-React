@@ -1,0 +1,18 @@
+.pagination {
+  width: 95%;
+  height: 30px;
+  margin-top: 20px;
+}
+.pagination > div {
+  margin: auto;
+  height: 30px;
+  width: fit-content;
+}
+.pagination > div > span {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+}
