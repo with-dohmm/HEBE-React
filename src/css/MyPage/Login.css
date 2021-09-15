@@ -107,7 +107,6 @@
     font-size: 0.7rem;
 }
 
-
 .login-join-modal div::after {
     content: '';
     display: inline-block;
@@ -124,7 +123,6 @@
     height: 1px;
     margin: 0 15px 3px 0;
     background: hsl(0, 0%, 73%, 0.8);
-
 }
 
 .login-api-area {
@@ -134,7 +132,74 @@
     justify-content: space-evenly
 }
 
-.login-api-area img {
+.login-api-area>img, .login-api-naver {
     width: 20%;
     cursor: pointer;
+    overflow: hidden;
+}
+
+.login-api-naver {
+    position: relative;
+}
+
+.login-api-naver>img{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#naverIdLogin a {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#naverIdLogin img {
+    display: none;
+}
+
+@media only screen and (max-width: 500px) {
+    .login-modal, input {
+        font-size: 0.8rem !important;
+    }
+    .login-modal {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+        padding: 60px 60px 0 60px;
+    }
+
+    .login-modal-input {
+        margin: 30px 0 20px 0;
+        width: 100%;
+        height: 200px;
+    }
+
+    .login-modal-input input, .login-modal-submit {
+        width: 100%;
+        height: 22%;
+    }
+    
+    .login-join-modal div {
+        margin: 15px 0;
+        font-size: 0.7rem;
+    }
+
+    .login-join-modal div::after {
+        width: 39%;
+        margin: 0 0 3px 15px;
+    }
+
+    .login-join-modal div::before {
+        width: 39%;
+        margin: 0 15px 3px 0;
+    }
+    
+    .login-api-area {
+        margin: 0 auto;
+        width: 100%;
+    }
 }

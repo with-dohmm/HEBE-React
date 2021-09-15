@@ -92,3 +92,7 @@
 .visible {
   visibility: visible;
 }
+
+.rdw-dropdown-selectedtext, .rdw-dropdown-selectedtext {
+  z-index: 0;
+}

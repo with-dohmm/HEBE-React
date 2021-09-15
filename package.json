@@ -11,19 +11,23 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
+    "browser-image-compression": "^1.0.15",
     "draft-convert": "^2.1.11",
     "draft-js": "^0.11.7",
     "draft-js-import-html": "^1.4.1",
     "draftjs-to-html": "^0.9.1",
     "html-to-draftjs": "^1.5.0",
     "http-proxy-middleware": "^2.0.1",
+    "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-beforeunload": "^2.5.1",
     "react-countdown-hook": "^1.1.0",
     "react-dom": "^17.0.2",
     "react-draft-wysiwyg": "^1.14.7",
+    "react-google-login": "^5.2.2",
     "react-intersection-observer": "^8.32.0",
     "react-js-pagination": "^3.0.3",
+    "react-kakao-login": "^2.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
@@ -52,5 +56,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8080"
+  "proxy": "http://ec2-15-164-202-112.ap-northeast-2.compute.amazonaws.com:8080"
 }

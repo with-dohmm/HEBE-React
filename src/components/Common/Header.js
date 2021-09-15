@@ -2,25 +2,40 @@ import React, { useState, useEffect, useRef, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import '../../css/Common/Header.css';
-import { LoginInfo } from './../../App';
+import { LoginInfoContext } from './../../App';
+import { useGoogleLogout } from 'react-google-login';
 
 const Header = ({ setOpenLoginModal, setOpenJoinModal, leftMenuToggle, rightMenuToggle, setLeftMenuToggle, setRightMenuToggle }) => {
   const [searchToggle, setSearchToggle] = useState(0);        // 검색창 모달 toggle
   const [searchNickname, setSearchNickname] = useState('');   // 검색창 input에 입력한 value가 담김
   const [searchUserList, setSearchUserList] = useState([]);   // 검색 결과 유저 리스트
-  const loginUserInfo = useContext(LoginInfo);  // 로그인 유저 정보
+  
+  const loginUserInfo = useContext(LoginInfoContext);  // 로그인 유저 정보
   const searchInput = useRef(); // 검색창 input 태그
   const history = useHistory();
+  const { signOut } = useGoogleLogout({
+    clientId : '1032001853934-78dmac7kurqos5r8bpvs9hen0afa8bgv.apps.googleusercontent.com',
+  });
 
-  // login <-> log out
+  // login <-> logout btn toggle
   const loginToggle = () => {
-    console.log('islogin : ' + loginUserInfo.isLogin);
-    if(loginUserInfo.isLogin) {   
+    if(loginUserInfo.isLogin) {      
+      if(loginUserInfo.provider === 'google') {
+        signOut();
+      };
+      
+      if(loginUserInfo.provider === 'kakao') {
+        window.Kakao.init('e7cf10ac1a71bf1129ab049b22386ffb');
+        window.Kakao.Auth.logout();
+      }
+      
+      if(loginUserInfo.provider === 'naver') {
+      }
+
       axios.post('/api/user/logout')
       .then(() => {
-        window.localStorage.removeItem('loginUser');
-        window.location.href = '/';
-        loginUserInfo = { iuser: 0 };
+        window.localStorage.clear();
+        window.location.reload();
       })
       .catch(error => {
           console.log(error);

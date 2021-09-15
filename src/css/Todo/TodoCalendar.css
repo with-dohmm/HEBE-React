@@ -1,0 +1,126 @@
+.calendar {
+    font-size: 1.5vh;
+    position: absolute;
+    top: 120px;
+    right: 20vh;
+    width: 498px;
+    height: 680px;
+    display: flex; /* display 설정해줘야 아래 flex로 해주면 direction 선택가능*/
+    flex-direction: column; /* 이건 세로순으로  태그들을 표시함 css*/
+    align-items: center; /* 이건 가로 중앙 css*/
+    justify-content: center; /* 이건 세로 중앙 css*/
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 4px 4px 10px rgb(211 211 211);
+}
+
+.calendar_image{
+    width: 100%;
+}
+
+.calendar_image > img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width: 100%;
+    height: 200px;
+}
+
+.calendar_header {
+    position: relative;
+    top: 20px;
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    width: 498px;
+    height: 50px;
+}
+
+.calendar_header > .calendar_header_controller {
+    margin: auto;
+    font-family: "GmarketSansBold";
+    font-weight: bold;
+    font-size: 30px;
+    color: #7a7a7a;
+}
+
+.prevBtn {
+    position: absolute;
+    bottom: 7px;
+    left: 100px;
+    color: #7a7a7a;
+    cursor: pointer;
+}
+
+.nextBtn {
+    position: absolute;
+    bottom: 7px;
+    right: 100px;
+    color: #7a7a7a;
+    cursor: pointer;
+}
+
+table {
+    display: flex;
+    width: 498px;
+    height: 500px;
+    margin: auto;
+}
+
+tbody {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+tr {
+    display: flex;
+    flex-direction: row;
+}
+
+.days > th {
+    display: flex;
+    width: 60px;
+    height: 26px;
+    font-family: "GmarketSansBold";
+}
+
+.days > th > span {
+    margin: auto;
+}
+
+.days > th:first-child {
+    color: red;
+}
+.days > th:nth-child(7) {
+    color: skyblue;
+}
+
+td {
+    display: flex;
+    width: 60px;
+    height: 60px;
+}
+
+.day {
+    display: flex;
+    height: 30px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-family: "GmarketSansBold";
+    font-weight: bold;
+    font-size: 25px;
+    margin: auto;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.day_todo {
+    background-color: skyblue;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+td:hover {
+    background-color: rgb(250, 235, 220);
+}

@@ -102,3 +102,25 @@
   color: gray;
   text-align: center;
 }
+.no-post > img {
+  display: block;
+  width: 356px;
+  margin: auto;
+}
+.no-post > span {
+  display: block;
+  width: 140px;
+  height: 40px;
+  margin: 15px auto;
+  padding: 5px 10px;
+  background: -webkit-linear-gradient(left, #867ec7, #d57272);
+  background:    -moz-linear-gradient(right, #867ec7, #d57272);
+  background:      -o-linear-gradient(right, #867ec7, #d57272);
+  background:         linear-gradient(to right, #867ec7, #d57272);
+  border-radius: 30px;
+  font-size: 17px;
+  color: white;
+  text-align: center;
+  line-height: 43px;
+  cursor: pointer;
+}

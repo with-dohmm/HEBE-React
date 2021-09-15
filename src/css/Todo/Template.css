@@ -1,0 +1,64 @@
+#todo {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    position: relative;
+    height: 950px;
+}
+
+#template {
+    width: 750px;
+    height: 700px;
+    position: absolute;
+    left: 25vh;
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.04);
+
+    font-family: Verdana, Geneva, Arial, sans-serif;
+    margin-top: 96px;
+    margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 4px 10px rgb(211 211 211);
+}
+
+#head {
+    position: relative;
+    padding-top: 24px;
+    padding-left: 32px;
+    padding-left: 32px;
+    padding-bottom: 64px;
+    background: #867ec7;
+    background: -webkit-linear-gradient(left, #867ec7, #d57272);
+    background: -moz-linear-gradient(right, #867ec7, #d57272);
+    background: -o-linear-gradient(right, #867ec7, #d57272);
+    background: linear-gradient(to right, #867ec7, #d57272);
+    border-radius: 15px;
+
+    /* height: 100px; */
+    /* border: 1px solid #e9ecef; */
+}
+
+#head > h1 {
+    margin: 0;
+    margin-left: 160px;
+    margin-top: 20px;
+    font-size: 55px;
+    color: #ffffff;
+}
+
+.fa-left {
+    position: absolute;
+    top: 65px;
+    left: 145px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.fa-right {
+    position: absolute;
+    top: 65px;
+    right: 150px;
+    color: #ffffff;
+    cursor: pointer;
+}

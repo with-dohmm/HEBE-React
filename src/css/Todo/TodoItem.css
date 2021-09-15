@@ -1,0 +1,113 @@
+.item {
+    position: relative;
+    width: 100%;
+    height: 55px;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: default(flex-start);
+
+    font-size: 20px;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    font-family: Verdana, Geneva, Arial, sans-serif;
+}
+
+.item > span {
+    position: relative;
+    left: 20px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.item > input {
+    position: relative;
+    width: 78%;
+    height: 50%;
+    left: 20px;
+    align-items: center;
+    outline: none;
+    border: 1px solid #c5ccd3;
+}
+
+.check_in {
+    color: gray;
+    text-decoration: line-through;
+}
+
+.check {
+    color: #20c997;
+}
+
+.far {
+    margin-top: 3px;
+    cursor: pointer;
+}
+
+.del_on {
+    position: absolute;
+    top: 14px;
+    right: 20px;
+
+    display: none;
+    color: #c5ccd3;
+    cursor: pointer;
+}
+
+.del_off {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+
+    color: #c5ccd3;
+    cursor: pointer;
+}
+
+.upd_on {
+    position: absolute;
+    top: 14px;
+    right: 45px;
+
+    display: none;
+    color: #c5ccd3;
+    cursor: pointer;
+}
+
+.upd_off {
+    position: absolute;
+    top: 17px;
+    right: 45px;
+
+    color: #c5ccd3;
+    cursor: pointer;
+}
+
+.del_on:active {
+    color: gray;
+}
+
+.item:hover > .del_on {
+    display: inline-block;
+}
+
+.upd_on:active {
+    color: #20c997;
+}
+
+.upd_off:active {
+    color: #20c997;
+}
+
+.item:hover > .upd_on {
+    display: inline-block;
+}
+
+.item:hover > .upd_off {
+    display: inline-block;
+}
+
+p {
+    width: 560px;
+    font-size: 18px;
+    font-family: "GmarketSans";
+}

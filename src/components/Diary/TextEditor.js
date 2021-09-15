@@ -6,7 +6,7 @@ import draftToHtml from 'draftjs-to-html';
 import createImagePlugin from '@draft-js-plugins/image';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import axios from 'axios';
-import { LoginInfo } from './../../App';
+import { LoginInfoContext } from './../../App';
 
 const imagePlugin = createImagePlugin();
 
@@ -16,10 +16,10 @@ const TextEditor = () => {
   const iboard = useRef(0);
   const imgSrc = useRef("");
   const thumbnailSrc = useRef(null);
-  const loginUserInfo = useContext(LoginInfo);
+  const loginUserInfo = useContext(LoginInfoContext);
   const history = useHistory();
 
-  let finish = 0;
+  const finish = useRef(0);
 
   // 최신 iboard 값 가져오기 -> +1 한 값을 iboard 변수에 담아줌
   // 로그인한 유저 iuser와 iboard 변수 조합으로 폴더 경로 생성
@@ -27,7 +27,7 @@ const TextEditor = () => {
     axios.post('/api/diary/recent')
     .then((response) => {
       console.log('most recent iboard : ' + response.data);
-      iboard.current = parseInt(response.data);
+      iboard.current = parseInt(response.data) + 1; // 기존에는 +1 없음
     })
     .catch((error) => {
       console.log(error);
@@ -35,7 +35,7 @@ const TextEditor = () => {
 
     return () => {
       console.log('useEffect didwillunmount');
-      if (finish === 0) {
+      if (finish.current === 0) {
         apiCancel();
       }
     }
@@ -51,25 +51,29 @@ const TextEditor = () => {
     let lastIndex = draftHtml.indexOf('"', firstIndex);
     thumbnailSrc.current = draftHtml.substring(firstIndex, lastIndex);
 
+    console.log(thumbnailSrc.current);
+
     if (title !== '' && draftHtml.length >= 8) {
       axios.post('/api/write', null, { params: {
         iuser: loginUserInfo.iuser,
         iboard: iboard.current,
         title: title,
         content: draftHtml,
-        thumbnail: (thumbnailSrc.current.includes('src="/img/') ? thumbnailSrc.current : '/img/common/no_thumbnail.jpg')
+        thumbnail: (thumbnailSrc.current.includes('/img/') ? thumbnailSrc.current : '/img/common/no_thumbnail.jpg')
       } })
       .then((response) => {
         if (response.data === 1) { 
           alert('작성 완료');
-          finish = 1;
-          history.push('/diary/' + loginUserInfo.iuser);
+          finish.current = 1;
         } else { 
           alert('작성 실패'); 
         }
       })
       .catch((error) => {
         console.log(error);
+      })
+      .then(() => {
+        history.push('/diary/' + loginUserInfo.iuser);
       });
     } else {
       alert('내용을 입력해주세요.');
@@ -124,14 +128,16 @@ const TextEditor = () => {
     } })
     .then((response) => {
       if (response.data === 1) {
-        console.log('작성 취소 성공');
-        history.push('/diary/' + loginUserInfo.iuser);
-      } else {
+        console.log('작성 취소 성공');   // 이제는 preWrite를 쓰지 않고 있으므로 DB에 데이터를 지울 필요가 없음
+      } else {                          // 대신 이미지를 업로드 했다가 작성 취소를 할 경우 버킷에 이미지가 남으므로 지워줘야 함
         console.log('실패')
       }
     })
     .catch((error) => {
       console.log(error);
+    })
+    .then(() => {
+      history.push('/diary/' + loginUserInfo.iuser);
     })
   }
 

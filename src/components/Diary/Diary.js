@@ -4,21 +4,25 @@ import CardList from '../Common/CardList';
 import DiaryCard from './DiaryCard';
 import GoTopBtn from '../Common/GoTopBtn';
 import axios from 'axios';
-import { LoginInfo } from './../../App';
+import { LoginInfoContext } from './../../App';
 import '../../css/Diary/Diary.css';
 import Pagination from './Pagination';
 
 const Diary = (props) => {
   const [nomarlOrCard, setNormalOrCard] = useState(0);
+  
   const [data, setData] = useState([]);
   const [allDataLength, setAllDataLength] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);  // 최근 페이지 번호
 	const postsPerPage = 8; // 페이지 당 게시글 수
 
+  const [searchUser, setSearchUser] = useState({ profileimg: null, nickname: null, introduction: null });
+
   const iuser = props.match.params.iuser;
-  const loginUserInfo = useContext(LoginInfo);
+  const loginUserInfo = useContext(LoginInfoContext);
   const history = useHistory();
 
+  // 페이징 번호, 좌우 버튼 클릭 시 데이터 가져오기
   useEffect(() => {
     if (nomarlOrCard === 0) {
        axios.post('/api/diary/paging', null, { params: { iuser: iuser, offsetNum: (8 * (currentPage - 1)) } })
@@ -30,40 +34,31 @@ const Diary = (props) => {
         console.log(error);
       })
     }
-  }, [nomarlOrCard, currentPage]);
+  }, [nomarlOrCard, currentPage, props.match.params.iuser]);
 
+  // 해당 유저 전체 글 length + 유저 정보 가져오기
   useEffect(() => {
+    // length 가져오기
+    axios.post('/api/diary', null, { params: { iuser: iuser } })
+    .then((response) => {
+      console.log(response.data);
+      setAllDataLength(response.data.length);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+    
     if (nomarlOrCard === 0) {
-      axios.post('/api/diary', null, { params: { iuser: iuser } })  // 작동 잘 되면 await 빼 보기
+      // 유저 정보 가져오기
+      axios.post('/api/diary/userInfo', null, { params: { iuser: iuser } })
       .then((response) => {
-        console.log(response.data);
-        setAllDataLength(response.data.length);
+        setSearchUser(response.data);
       })
       .catch((error) => {
         console.log(error);
-      })
+      });
     }
-  }, [nomarlOrCard]);
-
-  const handleWrite = () => {
-    return new Promise(
-      (resolve, reject) => {
-        console.log('handlewirte 작동');
-        axios.post('/api/preWrite', null, { params: {
-          iuser: loginUserInfo.iuser,
-          title: 'preWrite',
-          content: 'preWrite',
-        } })
-        .then((response) => {
-          resolve(response.data);
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-      }
-    )
-  }
+  }, [nomarlOrCard, props.match.params.iuser]);
 
   const renderingList = data.map((item, i) => 
     <DiaryCard 
@@ -87,7 +82,7 @@ const Diary = (props) => {
         <span>Diary</span>
         {loginUserInfo.iuser == iuser ? <img
           src={process.env.PUBLIC_URL + '/img/common/write_btn.svg'}
-          onClick={() => { handleWrite().then(() => { history.push('/write') }) }}
+          onClick={() => { history.push('/write') }}
         ></img> : <></>}
         <div className='diary-title-right'>
           <span className={nomarlOrCard === 0 ? 'btn-clicked' : 'btn-no-clicked'} onClick={() => { setNormalOrCard(0) }}>일반형</span>
@@ -98,19 +93,35 @@ const Diary = (props) => {
         nomarlOrCard === 0 
         ? <>
           <div className='diary-list'>
-            {renderingList}
-            <Pagination postsPerPage={postsPerPage} totalPosts={allDataLength} paginate={paginate} currentPage={currentPage} />
+            {
+              allDataLength !== 0 
+              ? renderingList 
+              : <div className='no-post'>
+                <img src={process.env.PUBLIC_URL + '/img/common/noPost.png'} />
+                <span onClick={() => { history.push('/write') }}>첫 글 쓰러가기</span>
+              </div>
+            }
+            {allDataLength !== 0 ? <Pagination postsPerPage={postsPerPage} totalPosts={allDataLength} paginate={paginate} currentPage={currentPage} /> : <></>}
           </div>
           <div className='diary-profile'>
             <div 
               className='diary-profile-img'
-              style={data[0] !== undefined ? { backgroundImage: `url(${process.env.PUBLIC_URL + data[0].profileimg})` } : {}}>
+              style={{ backgroundImage: `url(${process.env.PUBLIC_URL + searchUser.profileimg})` }}>
             </div>
-            <div className='diary-profile-nickname'>{data[0] !== undefined ? data[0].nickname : ''}</div>
-            <div className='diary-profile-introduction'>{data[0] !== undefined ? data[0].introduction : ''}</div>
+            <div className='diary-profile-nickname'>{searchUser.nickname}</div>
+            <div className='diary-profile-introduction'>{searchUser.introduction}</div>
           </div>
           </>
-        : <CardList menu='diary' iuser={iuser} sort={null} />
+        : <>
+            {
+              allDataLength !== 0 
+              ? <CardList menu='diary' iuser={iuser} sort={null} />
+              : <div className='no-post'>
+                  <img src={process.env.PUBLIC_URL + '/img/common/noPost.png'} />
+                  <span onClick={() => { history.push('/write') }}>첫 글 쓰러가기</span>
+                </div>
+            }
+          </>
       }
       <GoTopBtn />
     </div>

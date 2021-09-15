@@ -2,7 +2,7 @@
   position: relative;
   top: 115px;
   width: 900px;
-  margin: auto;
+  margin: 0 auto 20px auto;
   padding: 25px 35px 15px 35px;
   background-color: white;
   box-shadow: 3px 3px 5px 1px rgb(211, 211, 211)
@@ -68,6 +68,9 @@
 }
 .detail-profile-introduce > div:first-child {
   font-size: 22px;
+}
+.detail-profile-introduce > div:last-child {
+  color: rgb(116, 116, 116);
 }
 .detail-reply-top {
   height: 33px;

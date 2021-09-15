@@ -3,6 +3,7 @@
 .header {
   display: grid;
   position: fixed;
+  top: 0;
   grid-template-columns: 1fr 2fr 1fr;
   padding: 0 4.5%;
   margin-bottom: 25px;
@@ -97,11 +98,11 @@
 }
 #myPageBtn {
   padding: 5px 20px 3px 20px;
-  border-radius: 30px;
   background: -webkit-linear-gradient(left, #867ec7, #d57272);
   background:    -moz-linear-gradient(right, #867ec7, #d57272);
   background:      -o-linear-gradient(right, #867ec7, #d57272);
   background:         linear-gradient(to right, #867ec7, #d57272);
+  border-radius: 30px;
   line-height: 30px;
   text-align: center;
   color: white;
@@ -110,6 +111,9 @@
   cursor: pointer;
 }
 #myPageBtn > * {
+  display: block;
+  width: 100%;
+  height: 100%;
   color: white;
 }
 .header-right > i {
@@ -143,14 +147,12 @@
   color: #acacad;
   z-index: 6;
 }
-.right-hidden-menu > div {
+.right-hidden-menu > div, .right-hidden-menu a {
   height : 48px;
   width: 140px;
   line-height: 50px;
   text-align: center;
   cursor: pointer;
-}
-.right-hidden-menu > div {
   color: #949494
 }
 .right-hidden-menu > div:first-child {
@@ -163,7 +165,7 @@
           background-clip: text;
   color: transparent;
 }
-.right-hidden-menu > div:hover {
+.right-hidden-menu > div:hover, .right-hidden-menu a:hover {
   position: relative;
   top: 1px;
   background: -webkit-linear-gradient(left, #867ec7, #d57272);
@@ -178,6 +180,11 @@
   width: 130px;
   margin: auto;
   background-color: #acacad;
+}
+.right-hidden-menu a {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 /* 메뉴 왼쪽 반응형 */
@@ -243,7 +250,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 9998;
+  z-index: 101;
 }
 .search-modal-box {
   display: none;
@@ -255,7 +262,7 @@
   min-height: 95px;
   width: 40%;
   background-color: #ffffff;
-  z-index: 9999;
+  z-index: 102;
   overflow: hidden;
   user-select: none;
 }

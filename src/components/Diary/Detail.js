@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import '../../css/Diary/Detail.css';
-import { LoginInfo } from './../../App';
+import { LoginInfoContext } from './../../App';
 
 const Detail = (props) => {
   const iboard = props.match.params.iboard;
@@ -12,7 +13,9 @@ const Detail = (props) => {
   const [cmtToggle, setCmtToggle] = useState(0);
   const [isFav, setIsFav] = useState(0);
   
-  const loginUserInfo = useContext(LoginInfo);
+  const loginUserInfo = useContext(LoginInfoContext);
+  
+  const history = useHistory();
 
   const cmtTextarea = useRef();
 
@@ -62,6 +65,9 @@ const Detail = (props) => {
     })
     .catch((error) => {
       console.log(error);
+    })
+    .then(() => {
+      history.push('/diary/' + loginUserInfo.iuser);
     })
   }
 
@@ -217,7 +223,7 @@ const Detail = (props) => {
         {loginUserInfo.isLogin === true ? 
         <>
           <textarea name="comment" ref={cmtTextarea} onChange={(e) => setComment(e.target.value)}></textarea>
-          <div className="detail-reply-btn" onClick={apiCmtWrite}>댓글 작성</div>
+          <div className="detail-reply-btn" onClick={ apiCmtWrite }>댓글 작성</div>
         </>
         : <></>}
         <div className="detail-reply-list">
