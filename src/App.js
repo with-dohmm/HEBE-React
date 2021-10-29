@@ -4,7 +4,7 @@ import Header from './components/Common/Header';
 import Main from './components/Main/Main';
 import Diary from './components/Diary/Diary';
 import Write from './components/Diary/Write';
-import Frame from './components/ToDo/Frame';
+import Template from './components/ToDo/Template';
 import Detail from './components/Diary/Detail';
 import Update from './components/Diary/Update';
 import MyFav from './components/MyFav/MyFav';
@@ -14,13 +14,14 @@ import Login from './components/MyPage/Login';
 import './css/Common/Common.css';
 
 const loginUser = JSON.parse(window.localStorage.getItem('loginUser'));
-let loginUserInfo = {};
+let loginUserInfo = { iuser: 0 };
 
-if(loginUser !== null) {
+if (loginUser !== null) {
   loginUserInfo = {
-    isLogin:true, 
-    iuser:loginUser.iuser, 
+    isLogin: true, 
+    iuser: loginUser.iuser, 
     nickname: loginUser.nickname, 
+    username: loginUser.username,
     introduction: loginUser.introduction, 
     profileimg: loginUser.profileimg, 
     provider: loginUser.provider
@@ -43,6 +44,7 @@ const App = () => {
         iuser:loginUser.iuser, 
         nickname: loginUser.nickname, 
         introduction: loginUser.introduction, 
+        username: loginUser.username,
         profileimg: loginUser.profileimg, 
         provider: loginUser.provider
       };
@@ -72,44 +74,42 @@ const App = () => {
   }
 
   return (
-      <div className="app" onClick={(e) => { leftMenuController(e); rightMenuController(e); }}>
-        <LoginInfoContext.Provider value={loginUserInfo}>
-          <Header 
-            setOpenLoginModal={setOpenLoginModal} 
-            setOpenJoinModal={setOpenJoinModal} 
-            leftMenuToggle={leftMenuToggle}
-            rightMenuToggle={rightMenuToggle}
-            setLeftMenuToggle={setLeftMenuToggle}
-            setRightMenuToggle={setRightMenuToggle}
-          />
-          <Login openLoginModal={openLoginModal} setOpenLoginModal={setOpenLoginModal} />
-          <Join openJoinModal={openJoinModal} setOpenJoinModal={setOpenJoinModal} />
-          <Route path={"/"} component={Main} exact={true} />
-
-          {loginUserInfo.isLogin ?
+    <div className="app" onClick={(e) => { leftMenuController(e); rightMenuController(e); }}>
+      <LoginInfoContext.Provider value={loginUserInfo}>
+        <Header 
+          setOpenLoginModal={setOpenLoginModal} 
+          setOpenJoinModal={setOpenJoinModal} 
+          leftMenuToggle={leftMenuToggle}
+          rightMenuToggle={rightMenuToggle}
+          setLeftMenuToggle={setLeftMenuToggle}
+          setRightMenuToggle={setRightMenuToggle}
+        />
+        <Login openLoginModal={openLoginModal} setOpenLoginModal={setOpenLoginModal} setOpenJoinModal={setOpenJoinModal} />
+        <Join openJoinModal={openJoinModal} setOpenJoinModal={setOpenJoinModal} />
+        <Route path={"/"} component={Main} exact={true} />
+        {loginUserInfo.isLogin ?
           <Switch>
             <Route path={"/myPage"} component={MyPage} />
-            <Route path={"/todo"} component={Frame} />
+            <Route path={"/todo"} component={Template} />
             <Route path={"/update/:iboard"} component={Update} />
             <Route path={"/myFav/:iuser"} component={MyFav} />
             <Route path={"/write"} component={Write} />
             <Route path={"/diary/:iuser"} component={Diary} />
             <Route path={"/detail/:iboard"} component={Detail} />
           </Switch>
-          :  
-          <Switch>
-            <Redirect exact from="/myPage" to="/"/>
-            <Redirect exact from="/todo" to="/"/>
-            <Redirect exact from="/update/:iboard" to="/"/>
-            <Redirect exact from="/myFav/:iuser" to="/"/>
-            <Redirect exact from="/write" to="/"/>
-            <Redirect exact from="/diary/0" to="/"/>
-            <Route path={"/diary/:iuser"} component={Diary} />
-            <Route path={"/detail/:iboard"} component={Detail} />
-          </Switch>
-        }
-        </LoginInfoContext.Provider>
-      </div>
+        :  
+        <Switch>
+          <Redirect exact from="/myPage" to="/"/>
+          <Redirect exact from="/todo" to="/"/>
+          <Redirect exact from="/update/:iboard" to="/"/>
+          <Redirect exact from="/myFav/:iuser" to="/"/>
+          <Redirect exact from="/write" to="/"/>
+          <Redirect exact from="/diary/0" to="/"/>
+          <Route path={"/diary/:iuser"} component={Diary} />
+          <Route path={"/detail/:iboard"} component={Detail} />
+        </Switch>}
+      </LoginInfoContext.Provider>
+    </div>
   );
 }
 

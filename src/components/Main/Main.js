@@ -15,8 +15,10 @@ const Main = () => {
     <div className="content">
       <div className="content-header">
         <span className="list-title">{popularOrRecent === 0 ? 'Most Popular' : 'Latest Posts'}</span>
-        <span onClick={popularOrRecentHandler} className={popularOrRecent === 0 ? 'recent-list-btn btn-no-clicked' : 'recent-list-btn btn-clicked'}>최신글</span>
-        <span onClick={popularOrRecentHandler} className={popularOrRecent === 0 ? 'popular-list-btn btn-clicked' : 'popular-list-btn btn-no-clicked'}>인기글</span>
+        <div className="content-header-btn-box">
+          <span onClick={popularOrRecentHandler} className={popularOrRecent === 0 ? 'recent-list-btn btn-no-clicked' : 'recent-list-btn btn-clicked'}>최신글</span>
+          <span onClick={popularOrRecentHandler} className={popularOrRecent === 0 ? 'popular-list-btn btn-clicked' : 'popular-list-btn btn-no-clicked'}>인기글</span>
+        </div>
       </div>
       {
         popularOrRecent === 0 

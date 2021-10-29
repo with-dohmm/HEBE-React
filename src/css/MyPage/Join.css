@@ -36,8 +36,8 @@
 
 .join-modal-close {
     position: absolute;
-    top: 10px;
-    right: 17px;
+    top: 18px;
+    right: 28px;
     color: #7d7c83;
     font-size: 1.5rem;
     cursor: pointer;
@@ -155,7 +155,7 @@
 
 .join-warn-area {
     display: grid;
-    grid-template-rows: 77px 80px 86px 80px;
+    grid-template-rows: 77px 85px 80px 80px;
     justify-items: left;
     text-align: start;
 }
@@ -198,4 +198,53 @@
     background: linear-gradient(to right, #867ec7, #d57272);
     opacity: 0.9;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 500px) {
+    .join-modal, input, .join-email-select {
+        font-size: 0.8rem !important;
+    }
+
+    .join-modal {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+        padding: 45px 10px 0 10px;
+    }
+
+    .join-modal-input {
+        grid-template-columns: 1fr 55% 1fr;
+    }
+
+    .join-input-area {
+        width: 95%;
+    }
+
+    .join-input-area, .join-text-area, .join-warn-area {
+        grid-template-rows: 60px 60px 60px 60px;
+    }
+
+    .join-email-input-area, .join-email-input-area input {
+        width: 100%;
+    }
+
+    .join-email-input-area span, .join-email-site-area {
+        display: none;
+    }
+
+    .join-email-check-btn, .join-email-auth-btn {
+        padding: 8px 10px 5px 10px;
+        margin-top: 2px;
+    }
+
+    .join-modal-submit {
+        margin: 20px auto;
+        padding: 13px 7px 10px 7px;
+    }
+
+    .join-input-area input {
+        height: 30%;
+        margin-top: 2px;
+        padding: 16px 10px 14px 10px;
+    }
 }

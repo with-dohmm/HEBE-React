@@ -1,0 +1,185 @@
+.item {
+    display: grid;
+    grid-template-columns: 0.5fr 3fr 0.5fr 0.5fr;
+    position: relative;
+    width: 100%;
+    height: 70px;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: default(flex-start);
+
+    font-size: 20px;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    font-family: Verdana, Geneva, Arial, sans-serif;
+}
+
+.item > span {
+    display: grid;
+    position: relative;
+    left: 20px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.item > input {
+    display: grid;
+    position: relative;
+    width: 84%;
+    height: 50%;
+    left: 20px;
+    align-items: center;
+    outline: none;
+    border: 1px solid #c5ccd3;
+}
+
+.check_in > p {
+    color: gray;
+    text-decoration: line-through;
+    width: 80%;
+}
+
+.check {
+    color: #20c997;
+}
+
+.far {
+    margin-top: 3px;
+    cursor: pointer;
+}
+
+.del_on {
+    display: grid;
+    position: absolute;
+    top: 23px;
+    right: 20px;
+
+    display: none;
+    color: #c5ccd3;
+    cursor: pointer;
+}
+
+.del_off {
+    display: grid;
+    position: absolute;
+    top: 25px;
+    right: 20px;
+
+    color: #c5ccd3;
+    cursor: pointer;
+}
+
+.upd_on {
+    display: grid;
+    position: absolute;
+    top: 23px;
+    right: 45px;
+
+    display: none;
+    color: #c5ccd3;
+    cursor: pointer;
+}
+
+.upd_off {
+    display: grid;
+    position: absolute;
+    top: 24px;
+    right: 45px;
+
+    color: #c5ccd3;
+    cursor: pointer;
+}
+
+.del_on:active {
+    color: gray;
+}
+
+.item:hover > .del_on {
+    display: inline-block;
+}
+
+.upd_on:active {
+    color: #20c997;
+}
+
+.upd_off:active {
+    color: #20c997;
+}
+
+.item:hover > .upd_on {
+    display: inline-block;
+}
+
+.item:hover > .upd_off {
+    display: inline-block;
+}
+
+p {
+    font-size: 18px;
+    font-family: "GmarketSans";
+}
+
+
+@media screen and (max-width:1050px) {
+    .item > input {
+        width: 82%;
+    }
+    .check_in >p {
+        width: 82%;
+    }
+    .check_out >p {
+        width: 82%;
+    }
+}
+
+@media screen and (max-width:770px) {
+    .item > input {
+        width: 80%;
+    }
+    p {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width:650px) {
+    .item > input {
+        width: 77%;
+    }
+    p {
+        width: 77%;
+    }
+}
+
+@media screen and (max-width:580px) {
+    .item > input {
+        width: 72%;
+    }
+    p {
+        width: 72%;
+    }
+}
+
+@media screen and (max-width:450px) {
+    .item > input {
+        width: 72%;
+    }
+    .check_in>p{
+        font-size: 16px;
+    }
+    .check_out>p{
+        font-size: 16px;
+    }
+    .upd_on{
+        right: 29px;
+    }
+    .upd_off{
+        right: 29px;
+    }
+    .del_on{
+        right: 9px;
+    }
+    .del_off{
+        right: 9px;
+    }
+}

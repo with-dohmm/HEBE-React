@@ -1,0 +1,122 @@
+@charset "UTF-8";
+
+.myPage-views-area {
+    grid-column-start: 2;
+    grid-row: 1 / 3; 
+}
+
+.myPage-view-profile {
+    position: relative;
+}
+
+.myPage-view-profile-img {
+    width: 300px;
+    height: 300px;
+    border-radius: 70%;
+    margin: 6% auto;
+    overflow: hidden;
+}
+
+.myPage-view-profile-img img {
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+}
+
+.myPage-view-profile input[type="file"] {
+    display: none;
+}
+
+#file-upload-button {
+    width: 500px;
+    height: 500px;
+}
+
+.myPage-view-profile-camera {
+    position: absolute;
+    bottom: 10px;
+    right: 300px;
+    cursor: pointer;
+}
+
+.myPage-view-profile-userInfo {
+    display: flex;
+    width: 70%;
+    margin: -10px auto;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.myPage-view-profile-userInfo span {
+    font-size: 1.1rem;
+    margin: 0 0 5px 10px;
+}
+
+.myPage-view-profile-userInfo input {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 22px;
+    padding: 7px 15px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    color: #7d7c83;
+    border: 1px solid #bbbbbb;
+    border-radius: 5px;
+}
+
+.myPage-view-profile-userInfo input:focus { 
+    outline-style: none;
+    box-shadow: 0 0 0 1px #d57272;
+}
+
+.myPage-view-profile-userInfo-button {
+    width: 100px;
+    padding: 10px 15px;
+    text-align: center;
+    color: #FFF;
+    background: linear-gradient(to right, #867ec7, #d57272);
+    margin: 24px auto;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 500px) {
+    .myPage-view-profile-img {
+        width: 200px;
+        height: 200px;
+        border-radius: 70%;
+        margin: 10px auto;
+        overflow: hidden;
+    }
+    
+    .myPage-view-profile-camera {
+        width: 45px;
+        position: absolute;
+        bottom: 13px;
+        right: 155px;
+        cursor: pointer;
+    }
+
+    .myPage-view-profile-userInfo {
+        margin: 20px auto;
+        gap: 0;
+    }
+    
+    .myPage-view-profile-userInfo span {
+        font-size: 0.9rem;
+        margin: 0 0 10px 10px;
+    }
+    
+    .myPage-view-profile-userInfo input {
+        margin-bottom: 15px;
+        padding: 7px 15px 5px;
+        font-size: 0.9rem;
+    }
+    
+    .myPage-view-profile-userInfo-button {
+        width: 70px;
+        padding: 8px 15px;
+        font-size: 0.8rem;
+        margin: -5px auto;
+    }
+}

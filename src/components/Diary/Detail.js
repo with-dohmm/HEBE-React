@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import '../../css/Diary/Detail.css';
@@ -13,6 +14,8 @@ const Detail = (props) => {
   const [isFav, setIsFav] = useState(0);
   
   const loginUserInfo = useContext(LoginInfoContext);
+  
+  const history = useHistory();
 
   const cmtTextarea = useRef();
 
@@ -62,6 +65,9 @@ const Detail = (props) => {
     })
     .catch((error) => {
       console.log(error);
+    })
+    .then(() => {
+      history.push('/diary/' + loginUserInfo.iuser);
     })
   }
 
@@ -188,15 +194,20 @@ const Detail = (props) => {
 
   return (
     <div className="detail" >
+      {/* 글 제목 부분 */}
       <div className="detail-title" dangerouslySetInnerHTML={ {__html: data.title} }></div>
       <div className="detail-title-btn">
         <span style={loginUserInfo.isLogin !== true ? regdtSpan : {}}>{data.regdt}</span>
-        {buttons}
+        {buttons} {/* 해당 글의 작성자일 경우 수정, 삭제 버튼 표시 */}
         {loginUserInfo.isLogin === true ?
-         <span className="top-heart-btn" onClick={apiFav} style={isFav === 1 ? colorRed : colorGray}>♥</span>
+         <span className="top-heart-btn" onClick={apiFav} style={isFav === 1 ? colorRed : colorGray}>♥</span>  // 좋아요 버튼
         : <></>}
       </div>
+
+      {/* 글 내용 부분 */}
       <div className="detail-content" dangerouslySetInnerHTML={ {__html: data.content} }></div>
+      
+      {/* 작성자 프로필 부분 */}
       <div className="detail-profile">
         <img src={process.env.PUBLIC_URL + data.profileimg}></img>
         <div className="detail-profile-introduce">
@@ -204,6 +215,8 @@ const Detail = (props) => {
           <div>{data.introduction}</div>
         </div>
       </div>
+
+      {/* 댓글 부분 */}
       <div className="detail-reply-top">
         <div className="detail-reply-text">댓글</div>
         {loginUserInfo.isLogin === true ? 
@@ -217,7 +230,7 @@ const Detail = (props) => {
         {loginUserInfo.isLogin === true ? 
         <>
           <textarea name="comment" ref={cmtTextarea} onChange={(e) => setComment(e.target.value)}></textarea>
-          <div className="detail-reply-btn" onClick={apiCmtWrite}>댓글 작성</div>
+          <div className="detail-reply-btn" onClick={ apiCmtWrite }>댓글 작성</div>
         </>
         : <></>}
         <div className="detail-reply-list">

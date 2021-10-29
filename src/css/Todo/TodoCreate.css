@@ -1,0 +1,140 @@
+.insertForm {
+    position: relative;
+    box-sizing: border-box;
+    padding-left: 20px;
+    height: 50px;
+    width: 100%;
+    outline: none;
+    background-color: #867ec7;
+    background: -webkit-linear-gradient(left, #867ec7, #d57272);
+    background: -moz-linear-gradient(right, #867ec7, #d57272);
+    background: -o-linear-gradient(right, #867ec7, #d57272);
+    background: linear-gradient(to right, #867ec7, #d57272);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+input[type="text"]:-ms-clear {
+    display: none;
+}
+
+.insertForm > input {
+    height: 40px;
+    width: 88%;
+    border-radius: 5%;
+}
+
+.toggle {
+    position: absolute;
+    top: 55px;
+    right: 35px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.plus {
+    position: absolute;
+    top: 6px;
+    padding-left: 0.5vw;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.cal {
+    position: absolute;
+    top: 4px;
+    padding-left: 2.8vw;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+@media screen and (max-width:1600px) {
+    .plus {
+        padding-left: 1vw;
+    }
+    .cal {
+        padding-left: 3.5vw;
+    }
+}
+
+@media screen and (max-width:1350px) {
+    .plus {
+        padding-left: 1vw;
+    }
+    .cal {
+        padding-left: 4.5vw;
+    }
+   }
+
+@media screen and (max-width:1110px) {
+ .plus {
+     padding-left: 1vw;
+ }
+}
+
+@media screen and (max-width:1110px) {
+    .plus {
+        padding-left: 0.8vw;
+    }
+    .cal {
+        padding-left: 4.5vw;
+    }
+   }
+
+@media screen and (max-width: 890px) {
+    .insertForm{
+        padding-left: 10px;
+    }
+    .cal {
+        padding-left: 6vw;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .plus {
+        padding-left: 1.5vw;
+    }
+    .cal {
+        padding-left: 6vw;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .insertForm >input {
+        width: 85%;
+    }
+    .plus {
+        padding-left: 1vw;
+    }
+    .cal {
+        padding-left: 7vw;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    input {
+        width: 10%;
+    }
+    .plus {
+        padding-left: 3px;
+    }
+    .cal {
+        padding-left: 7vw;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    input {
+        width: 10%;
+        position: relative;
+        right: 4px;
+    }
+    .plus {
+        right:32px;
+        z-index: 2;
+    }
+    .cal {
+        right: 2px;
+        z-index: 1;
+    }
+}
+

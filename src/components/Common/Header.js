@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import '../../css/Common/Header.css';
 import { LoginInfoContext } from './../../App';
-import { GoogleLogout } from 'react-google-login';
+import { useGoogleLogout } from 'react-google-login';
 
 const Header = ({ setOpenLoginModal, setOpenJoinModal, leftMenuToggle, rightMenuToggle, setLeftMenuToggle, setRightMenuToggle }) => {
   const [searchToggle, setSearchToggle] = useState(0);        // 검색창 모달 toggle
@@ -13,22 +13,19 @@ const Header = ({ setOpenLoginModal, setOpenJoinModal, leftMenuToggle, rightMenu
   const loginUserInfo = useContext(LoginInfoContext);  // 로그인 유저 정보
   const searchInput = useRef(); // 검색창 input 태그
   const history = useHistory();
-  const googleLogout = useRef();
+  const { signOut } = useGoogleLogout({
+    clientId : '1032001853934-78dmac7kurqos5r8bpvs9hen0afa8bgv.apps.googleusercontent.com',
+  });
 
   // login <-> logout btn toggle
   const loginToggle = () => {
-    console.log('islogin : ' + loginUserInfo.isLogin);
     if(loginUserInfo.isLogin) {      
       if(loginUserInfo.provider === 'google') {
-        window.addEventListener('click', googleLogout);
-      }
+        signOut();
+      };
       
       if(loginUserInfo.provider === 'kakao') {
-        window.Kakao.init('e7cf10ac1a71bf1129ab049b22386ffb');
         window.Kakao.Auth.logout();
-      }
-      
-      if(loginUserInfo.provider === 'naver') {
       }
 
       axios.post('/api/user/logout')
@@ -44,8 +41,8 @@ const Header = ({ setOpenLoginModal, setOpenJoinModal, leftMenuToggle, rightMenu
     }
   }
 
-   // 검색창 input value 초기화
-   const searchReset = () => {
+  // 검색창 input value 초기화
+  const searchReset = () => {
     searchInput.current.value = '';
   }
 
@@ -57,14 +54,14 @@ const Header = ({ setOpenLoginModal, setOpenJoinModal, leftMenuToggle, rightMenu
 
   // 유저 검색 api
   const apiSearch = () => {
-    if (searchInput.current.value.length > 1) {
+    if (searchInput.current.value.length > 1) { // 두 글자부터 검색 가능
       axios.post('/api/search', null, { params: {
         nickname: searchNickname
       } })
       .then((response) => {
         console.log(response.data);
         if (response.data.length === 0) {
-          setSearchUserList([{ nickname: '결과 없음' }]); // 이 경우 클릭 이벤트 방지 코드 작성 필수
+          setSearchUserList([{ nickname: '결과 없음' }]);
         } else {
           setSearchUserList(response.data);
         }
@@ -230,12 +227,6 @@ const Header = ({ setOpenLoginModal, setOpenJoinModal, leftMenuToggle, rightMenu
         <i className="fas fa-search" onClick={ apiSearch }></i>
         {userList}
       </div>
-
-      <GoogleLogout 
-        ref={googleLogout}
-        className="hidden"
-        clientId="1032001853934-78dmac7kurqos5r8bpvs9hen0afa8bgv.apps.googleusercontent.com"
-      />
     </div>
   );
 }

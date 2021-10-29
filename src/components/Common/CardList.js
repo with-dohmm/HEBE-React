@@ -51,7 +51,7 @@ const CardList = ({menu, sort, iuser}) => {
   }
  
   useEffect(() => {
-    setIsLoading(true); // data를 로딩할테니 true로 변경
+    setIsLoading(true); // 로딩 상태 -> true
     getList();
   }, [sort]);
 

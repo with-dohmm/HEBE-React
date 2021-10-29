@@ -26,7 +26,7 @@ const Join = ({ openJoinModal, setOpenJoinModal }) => {
     const sites = [
         { id: 1, site: 'gmail.com' },
         { id: 2, site: 'naver.com' },
-        { id: 3, site: 'daum.net' },
+        { id: 3, site: 'kakao.com' },
         { id: 4, site: '직접 입력' }
     ];
 
@@ -39,7 +39,7 @@ const Join = ({ openJoinModal, setOpenJoinModal }) => {
         emailState: false, nicknameState: false, passwordState: false, rePasswordState: false
     });
 
-    // 모달창 닫기
+    {/* 모달창 닫기 */}
     const joinModalClose = () => {
         setOpenJoinModal(false);
         
@@ -66,22 +66,18 @@ const Join = ({ openJoinModal, setOpenJoinModal }) => {
         }
     };
 
-    // 이메일 주소 선택 or 입력
+    {/* 이메일 주소 선택 or 입력 */}
     const joinEmailValue = (e) => {
-        console.log('value : ' + e.target.value);
-
         if(e.target.value !== sites[3].site) {
             joinEmailSite.current.classList.add('hidden');
             setEmailSite(e.target.value);
-            console.log('emailSite : ' + emailSite);
         } else {
             joinEmailSite.current.classList.remove('hidden');
             joinEmailSite.current.focus();
-            console.log('emailSite : ' + emailSite);
         }
     };
 
-    // 이메일 인증 버튼
+    {/* 이메일 인증 버튼 */}
     const emailCheckApi = () => {
         let username = joinEmailInput.current.value;
 
@@ -92,7 +88,6 @@ const Join = ({ openJoinModal, setOpenJoinModal }) => {
 
 			axios.post('/api/user/joinAuth', {username})
             .then(res => {
-                console.log("res.data : " + res.data);
                 if(res.data === 1) {
                     alert('이미 가입된 이메일 입니다.');
                 } else {
@@ -104,7 +99,7 @@ const Join = ({ openJoinModal, setOpenJoinModal }) => {
         
                     start();
                     
-                    window.localStorage.setItem('authKey', res.data);
+                    window.sessionStorage.setItem('authKey', res.data);
                     alert("인증번호가 전송되었습니다.");
                 }
             })
@@ -112,15 +107,14 @@ const Join = ({ openJoinModal, setOpenJoinModal }) => {
                 console.log(error);
             });
         }
-        console.log('mail : ' + username);
     };
 
-    // 이메일 인증 번호 입력 버튼
+    {/* 이메일 인증 번호 입력 버튼 */}
     const emailAuthApi = () => {
-        if(window.localStorage.getItem('authKey') === authKey) {
+        if(window.sessionStorage.getItem('authKey') === authKey) {
             setAuthKey(1);
             setInputStates({...inputStates, emailState: true});
-            window.localStorage.removeItem('authKey');
+            window.sessionStorage.clear();
             emailAuthBtn.current.classList.add('hidden');
             joinEmailAuthTimer.current.classList.add('hidden');
             joinEmailAuth.current.classList.add('hidden');
@@ -130,24 +124,18 @@ const Join = ({ openJoinModal, setOpenJoinModal }) => {
         }
     };
 
-    // 닉네임 중복 검사-
+    {/* 닉네임 중복 검사 */}
     const nicknameApi = (e) => {
         setNickname(nickname = e.target.value);
-
-        console.log('nickname : '  + nickname);
-
         if(nickname.length > 1) {
             nicknameWarn.current.innerText=' ';
             axios.post('/api/user/nickname', {nickname})
             .then(res => {
                 if(res.data === 0) {
-                    console.log('res.data : ' + res.data);
                     nicknameWarn.current.innerText='사용 가능';
-                    console.log('사용 가능 : ' + nickname);
                     setInputStates({...inputStates, nicknameState:true});
                 } else {
                     nicknameWarn.current.innerText='중복된 닉네임';
-                    console.log('사용 불가 : ' + nickname);
                     setInputStates({...inputStates, nicknameState:false});
                 }
             })
@@ -161,9 +149,8 @@ const Join = ({ openJoinModal, setOpenJoinModal }) => {
         }
     };
 
-    // 비밀번호 검사
+    {/* 비밀번호 검사 */}
     useEffect(() => {
-        console.log(passwords)
         if(passwords.password.length > 6) {
             if(passwords.password === passwords.rePassword) {
                 rePasswordWarn.current.innerText = '일치합니다.';
@@ -180,13 +167,14 @@ const Join = ({ openJoinModal, setOpenJoinModal }) => {
         }
       }, [passwords]);
 
-    // 회원가입 버튼
+    {/* 회원가입 버튼 */}
     const joinApi = () => {
         const username = joinEmailInput.current.value + '@' + emailSite;
         const joinUser = { username, nickname, password : passwords.password };
 
         if(authKey === 1) {
-            if(inputStates.emailState && inputStates.nicknameState && inputStates.passwordState && inputStates.rePasswordState) {
+            if(inputStates.emailState && inputStates.nicknameState && 
+                inputStates.passwordState && inputStates.rePasswordState) {
                 axios.post('/api/user/join', joinUser)
                 .then(res => {
                     joinModalClose();

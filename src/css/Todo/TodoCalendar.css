@@ -1,0 +1,296 @@
+.calendar {
+    font-size: 1.5vh;
+    position: absolute;
+    top: 120px;
+    right: 10vw;
+    width: 498px;
+    height: 680px;
+    display: flex; /* display 설정해줘야 아래 flex로 해주면 direction 선택가능*/
+    flex-direction: column; /* 이건 세로순으로  태그들을 표시함 css*/
+    align-items: center; /* 이건 가로 중앙 css*/
+    justify-content: center; /* 이건 세로 중앙 css*/
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 4px 4px 10px rgb(211 211 211);
+}
+
+.calendar_image{
+    width: 100%;
+}
+
+.close {
+    position: absolute;
+    color: white;
+    top: 20px;
+    right: 20px;
+}
+
+.calendar_image > img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width: 100%;
+    height: 200px;
+}
+
+.calendar_header {
+    position: relative;
+    top: 20px;
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    width: 498px;
+    height: 50px;
+}
+
+.calendar_header > .calendar_header_controller {
+    margin: auto;
+    font-family: "GmarketSansBold";
+    font-weight: bold;
+    font-size: 30px;
+    color: #7a7a7a;
+}
+
+.prevBtn {
+    position: absolute;
+    bottom: 7px;
+    left: 100px;
+    color: #7a7a7a;
+    cursor: pointer;
+}
+
+.nextBtn {
+    position: absolute;
+    bottom: 7px;
+    right: 100px;
+    color: #7a7a7a;
+    cursor: pointer;
+}
+
+table {
+    display: flex;
+    width: 498px;
+    height: 500px;
+    margin: auto;
+}
+
+tbody {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+tr {
+    display: flex;
+    flex-direction: row;
+}
+
+tr > td:first-child > span{
+    color: red;
+}
+
+tr > td:last-child > span{
+    color: skyblue;
+}
+
+.days > th {
+    display: flex;
+    width: 60px;
+    height: 26px;
+    font-family: "GmarketSansBold";
+}
+
+.days > th > span {
+    margin: auto;
+}
+
+.days > th:first-child > span {
+    color: red;
+}
+.days > th:nth-child(7) > span {
+    color: skyblue;
+}
+
+td {
+    display: flex;
+    width: 60px;
+    height: 60px;
+}
+
+.day {
+    display: flex;
+    height: 30px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-family: "GmarketSansBold";
+    font-weight: bold;
+    font-size: 25px;
+    margin: auto;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.day_todo {
+    background-color: skyblue;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+td:hover {
+    background-color: rgb(250, 235, 220);
+}
+
+@media screen and (max-width:1830px) {
+    .calendar {
+        width: 470px;
+    }
+    .calendar_header {
+        width: 470px;
+    }
+    .prevBtn {
+        left: 90px;
+    }
+    .nextBtn {
+        right: 90px;
+    }
+    tbody {
+        margin-left: 25px;
+    }
+    .days > th {
+        width: 57px;
+    }
+    td {
+        width: 57px;
+    }
+}
+
+@media screen and (max-width:1730px) {
+    .calendar {
+        width: 450px;
+        right: 8vw;
+    }
+    .calendar_header {
+        width: 450px;
+    }
+    .prevBtn {
+        left: 80px;
+    }
+    .nextBtn {
+        right: 80px;
+    }
+    .days > th {
+        width: 55px;
+    }
+    td {
+        width: 55px;
+    }
+}
+
+@media screen and (max-width:1620px) {
+    .calendar {
+        width: 430px;
+        right: 6vw;
+    }
+    .calendar_header {
+        width: 430px;
+    }
+    .prevBtn {
+        left: 70px;
+    }
+    .nextBtn {
+        right: 70px;
+    }
+    tbody {
+        margin-left: 23px;
+    }
+    .days > th {
+        width: 53px;
+    }
+    td {
+        width: 53px;
+    }
+} 
+
+@media screen and (max-width:1520px) {
+    .calendar {
+        width: 410px;
+        right: 4vw;
+    } 
+    .calendar_header {
+        width: 410px;
+    }
+    .prevBtn {
+        left: 60px;
+    }
+    .nextBtn {
+        right: 60px;
+    }
+    tbody {
+        margin-left: 20px;
+    }
+    .days > th {
+        width: 51px;
+    }
+    td {
+        width: 51px;
+    }
+}
+
+@media screen and (max-width:1430px) {
+    .calendar {
+        width: 390px;
+        right: 2vw;
+    }
+    .calendar_header {
+        width: 390px;
+    }
+    .prevBtn {
+        left: 50px;
+    }
+    .nextBtn {
+        right: 50px;
+    }
+    tbody {
+        margin-left: 17px;
+    }
+    .days > th {
+        width: 49px;
+    }
+    td {
+        width: 49px;
+    }
+}
+
+@media screen and (max-width:1350px) {
+    .calendar {
+        /* display: none; */
+        left: 30vw;
+        z-index: 99;
+    } 
+}
+
+@media screen and (max-width:890px) {
+    .calendar {
+        top:10px;
+        left: 25vw;
+        z-index: 99;
+    } 
+}
+
+@media screen and (max-width:750px) {
+    .calendar {
+        left: 20vw;
+    } 
+}
+
+@media screen and (max-width:650px) {
+    .calendar {
+        left: 10vw;
+    } 
+}
+
+@media screen and (max-width:450px) {
+    .calendar {
+        left: 8vw;
+    } 
+}

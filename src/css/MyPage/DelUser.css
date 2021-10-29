@@ -1,0 +1,122 @@
+@charset "UTF-8";
+
+.myPage-view-delUser {
+    width: 70%;
+    margin: 6% auto;
+}
+
+.myPage-view-delUser-info h2 {
+    position: relative;
+}
+
+.myPage-view-delUser-info h2::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    bottom: -10px;
+    background: #333;
+}
+
+.myPage-view-delUser-info p {
+    margin-bottom: 40px;
+}
+
+.myPage-view-delUser-check {
+    display: grid;
+    width: 100%;
+    height: 150px;
+    background: rgb(240, 240, 240);
+    border-radius: 10px;
+    grid-template-columns: 1fr 62%;
+}
+
+.myPage-view-delUser-check-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 20px;
+    padding-right: 35px;
+}
+
+.myPage-view-delUser-check-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 19px;
+}
+
+.myPage-view-delUser-check-right input {
+    width: 200px;
+    height: 15px;
+    color: #7d7c83;
+    padding: 5px 10px;
+    border: 1px solid #bbbbbb;
+    border-radius: 5px;
+}
+
+.myPage-view-delUser-check-right input:focus { 
+    outline-style: none;
+    box-shadow: 0 0 0 1px #867ec7;
+}
+
+.myPage-view-delUser-button {
+    width: 100px;
+    padding: 15px 15px 10px 15px;
+    text-align: center;
+    color: #FFF;
+    background: linear-gradient(to right, #867ec7, #d57272);
+    margin: 53px auto;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 500px) {
+    .myPage-view-delUser {
+        width: 70%;
+        margin: 0 auto;
+        word-break: keep-all;
+    }
+
+    .myPage-view-delUser-info h2 {
+        position: relative;
+        font-size: 0.9rem;
+    }
+    
+    .myPage-view-delUser-info h2::after {
+        bottom: -6px;
+    }
+    
+    .myPage-view-delUser-info p {
+        width: 90%;
+        margin-bottom: 15px;
+        font-size: 0.7rem;
+    }
+
+    .myPage-view-delUser-check {
+        height: 80px;
+        grid-template-columns: 1fr 70%;
+    }
+    
+    .myPage-view-delUser-check-left, .myPage-view-delUser-check-right {
+        gap: 10px;
+        font-size: 0.8rem;
+        padding-right: 15px;
+    }
+    
+    .myPage-view-delUser-check-right input {
+        width: 75%;
+        height: 10px;
+        padding: 4px 10px;
+    }
+
+    .myPage-view-delUser-button {
+        width: 70px;
+        padding: 11px 14px 8px;
+        font-size: 0.8rem;
+        margin: 15px auto;
+    }
+}

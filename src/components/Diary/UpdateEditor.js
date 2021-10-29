@@ -44,8 +44,8 @@ const UpdateEditor = (props) => {
   }, []);
 
   // 글쓰기 수정 완료
-  const apiWrite = () => {
-    console.log('apiWrite 작동');
+  const apiUpdate = () => {
+    console.log('apiUpdate 작동');
     console.log(iboard);
 
     const draftHtml = draftToHtml(convertToRaw(editorState.getCurrentContent()));
@@ -53,7 +53,7 @@ const UpdateEditor = (props) => {
     let lastIndex = draftHtml.indexOf('"', firstIndex);
     thumbnailSrc.current = draftHtml.substring(firstIndex, lastIndex);
 
-    axios.post('/api/write', null, { params: {
+    axios.post('/api/update', null, { params: {
       iuser: loginUserInfo.iuser,
       iboard: iboard,
       title: title,
@@ -63,13 +63,15 @@ const UpdateEditor = (props) => {
     .then((response) => {
       if (response.data === 1) {
         alert('수정 완료!');
-        history.push('/diary/' + loginUserInfo.iuser);  // 수정 필수
       } else {
         alert('수정 실패');
       }
     })
     .catch((error) => {
       console.log(error);
+    })
+    .then(() => {
+      history.push('/diary/' + loginUserInfo.iuser);
     })
   }
 
@@ -149,7 +151,7 @@ const UpdateEditor = (props) => {
       />
       <div className="textEditor-footer">
         <span className="textEditor-footer-cancelBtn" onClick={() => { history.push('/detail/:iboard') }}>취소</span>
-        <span className="textEditor-footer-writeBtn" onClick={() => apiWrite()}>작성</span>
+        <span className="textEditor-footer-writeBtn" onClick={() => apiUpdate()}>수정</span>
       </div>
     </div>
   )

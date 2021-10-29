@@ -27,7 +27,7 @@ const TextEditor = () => {
     axios.post('/api/diary/recent')
     .then((response) => {
       console.log('most recent iboard : ' + response.data);
-      iboard.current = parseInt(response.data);
+      iboard.current = parseInt(response.data) + 1; // 기존에는 +1 없음
     })
     .catch((error) => {
       console.log(error);
@@ -43,15 +43,10 @@ const TextEditor = () => {
 
   // 글쓰기 작성 완료
   const apiWrite = () => {
-    console.log('apiWrite 작동');
-    console.log(iboard);
-
     const draftHtml = draftToHtml(convertToRaw(editorState.getCurrentContent()));
     let firstIndex = draftHtml.indexOf('src="') + 5;
     let lastIndex = draftHtml.indexOf('"', firstIndex);
     thumbnailSrc.current = draftHtml.substring(firstIndex, lastIndex);
-
-    console.log(thumbnailSrc.current);
 
     if (title !== '' && draftHtml.length >= 8) {
       axios.post('/api/write', null, { params: {
@@ -128,14 +123,16 @@ const TextEditor = () => {
     } })
     .then((response) => {
       if (response.data === 1) {
-        console.log('작성 취소 성공');
-        history.push('/diary/' + loginUserInfo.iuser);
-      } else {
+        console.log('작성 취소 성공');   // 이제는 preWrite를 쓰지 않고 있으므로 DB에 데이터를 지울 필요가 없음
+      } else {                          // 대신 이미지를 업로드 했다가 작성 취소를 할 경우 버킷에 이미지가 남으므로 지워줘야 함
         console.log('실패')
       }
     })
     .catch((error) => {
       console.log(error);
+    })
+    .then(() => {
+      history.push('/diary/' + loginUserInfo.iuser);
     })
   }
 

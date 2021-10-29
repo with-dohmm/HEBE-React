@@ -60,27 +60,6 @@ const Diary = (props) => {
     }
   }, [nomarlOrCard, props.match.params.iuser]);
 
-  // 작성하기 버튼 누르면 임시 글 생성
-  const handleWrite = () => {
-    return new Promise(
-      (resolve, reject) => {
-        console.log('handlewirte 작동');
-        axios.post('/api/preWrite', null, { params: {
-          iuser: loginUserInfo.iuser,
-          title: 'preWrite',
-          content: 'preWrite',
-        } })
-        .then((response) => {
-          resolve(response.data);
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-      }
-    )
-  }
-
   const renderingList = data.map((item, i) => 
     <DiaryCard 
       key={item.iboard}
@@ -99,27 +78,30 @@ const Diary = (props) => {
 
   return (
     <div className='diary'>
+      {/* 소제목 부분 */}
       <div className='diary-title-wrap'>
         <span>Diary</span>
-        {loginUserInfo.iuser == iuser ? <img
-          src={process.env.PUBLIC_URL + '/img/common/write_btn.svg'}
-          onClick={() => { handleWrite().then(() => { history.push('/write') }) }}
+        {loginUserInfo.iuser == iuser ? <img 
+          src={process.env.PUBLIC_URL + '/img/common/write_btn.svg'}  // 현재 로그인한 유저와 현재 페이지의 유저 정보가 같을 경우 작성 버튼 표시
+          onClick={() => { history.push('/write') }}
         ></img> : <></>}
         <div className='diary-title-right'>
           <span className={nomarlOrCard === 0 ? 'btn-clicked' : 'btn-no-clicked'} onClick={() => { setNormalOrCard(0) }}>일반형</span>
           <span className={nomarlOrCard === 1 ? 'btn-clicked' : 'btn-no-clicked'} onClick={() => { setNormalOrCard(1) }}>카드형</span>
         </div>
       </div>
+
+      {/* 다이어리 리스트 부분 */}
       { 
-        nomarlOrCard === 0 
+        nomarlOrCard === 0    // 일반형
         ? <>
           <div className='diary-list'>
             {
-              allDataLength !== 0 
+              allDataLength !== 0   // 게시글이 없을 경우 noPost.png 사진 표시
               ? renderingList 
               : <div className='no-post'>
                 <img src={process.env.PUBLIC_URL + '/img/common/noPost.png'} />
-                <span onClick={() => { handleWrite().then(() => { history.push('/write') }) }}>첫 글 쓰러가기</span>
+                <span onClick={() => { history.push('/write') }}>첫 글 쓰러가기</span>
               </div>
             }
             {allDataLength !== 0 ? <Pagination postsPerPage={postsPerPage} totalPosts={allDataLength} paginate={paginate} currentPage={currentPage} /> : <></>}
@@ -134,12 +116,12 @@ const Diary = (props) => {
           </div>
           </>
         : <>
-            {
+            { // 카드형
               allDataLength !== 0 
               ? <CardList menu='diary' iuser={iuser} sort={null} />
               : <div className='no-post'>
                   <img src={process.env.PUBLIC_URL + '/img/common/noPost.png'} />
-                  <span onClick={() => { handleWrite().then(() => { history.push('/write') }) }}>첫 글 쓰러가기</span>
+                  <span onClick={() => { history.push('/write') }}>첫 글 쓰러가기</span>
                 </div>
             }
           </>
