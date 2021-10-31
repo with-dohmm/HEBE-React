@@ -45,9 +45,6 @@ const UpdateEditor = (props) => {
 
   // 글쓰기 수정 완료
   const apiUpdate = () => {
-    console.log('apiUpdate 작동');
-    console.log(iboard);
-
     const draftHtml = draftToHtml(convertToRaw(editorState.getCurrentContent()));
     let firstIndex = draftHtml.indexOf('src="') + 5;
     let lastIndex = draftHtml.indexOf('"', firstIndex);
@@ -92,7 +89,6 @@ const UpdateEditor = (props) => {
             header: { 'ContentType': 'multipart/form-data' }
           })
           .then((response) => {
-            console.log('file name : ' + response.data);
             imgSrc.current = process.env.PUBLIC_URL + '/img/' + loginUserInfo.iuser + '/' + iboard + '/' + response.data;
           })
           .catch((error) => {
@@ -106,7 +102,6 @@ const UpdateEditor = (props) => {
             reader.readAsDataURL(file);
           })
           .then(() => {
-            console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())) + 1);
           })
         } else {
           reject(new Error("file no exist"))

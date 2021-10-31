@@ -58,7 +58,6 @@ const Login = ({ openLoginModal, setOpenLoginModal, setOpenJoinModal }) => {
             }
         })
         .then((res) => { loginAxiosAfter(res); })
-        .catch((e) => { console.log(e); })
     };
 
     {/* 카카오 로그인 */}   
@@ -67,7 +66,6 @@ const Login = ({ openLoginModal, setOpenLoginModal, setOpenJoinModal }) => {
         kakaoScript.src = 'https://developers.kakao.com/sdk/js/kakao.min.js';
         document.head.appendChild(kakaoScript);
 
-        // Kakao sdk 스크립트 로드 완료시
         kakaoScript.onload = () => {
             window.Kakao.init('e7cf10ac1a71bf1129ab049b22386ffb');
             window.Kakao.Auth.createLoginButton({
@@ -92,9 +90,7 @@ const Login = ({ openLoginModal, setOpenLoginModal, setOpenJoinModal }) => {
                         }
                         axios.post('/api/user/oauth', data)
                         .then( (res) => { loginAxiosAfter(res); })
-                        .catch( (e) => { console.error(e); });
-                    },
-                    fail: (e) => { console.log(e); }
+                    }
                 });    
             }
         });
@@ -129,7 +125,6 @@ const Login = ({ openLoginModal, setOpenLoginModal, setOpenJoinModal }) => {
                             clientId="1032001853934-78dmac7kurqos5r8bpvs9hen0afa8bgv.apps.googleusercontent.com"
                             render={renderProps => <img src="/img/common/googleLogo.svg" onClick={renderProps.onClick} disabled={renderProps.disabled} alt="구글 로그인 버튼"/>}
                             onSuccess={ googleApi }
-                            onFailure={ console.error() }
                             cookiePolicy={"single_host_origin"}
                         />
                         

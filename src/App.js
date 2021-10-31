@@ -38,7 +38,6 @@ const App = () => {
 
   useEffect(() => {
     if(loginUser !== null) {
-      console.log('로그인 성공');
       loginUserInfo = {
         isLogin:true, 
         iuser:loginUser.iuser, 
@@ -48,9 +47,7 @@ const App = () => {
         profileimg: loginUser.profileimg, 
         provider: loginUser.provider
       };
-      console.log('loginUserInfo.isLogin : ' + loginUserInfo.isLogin);
     } else {
-      console.log('로그인 실패');
     }
   }, []);
 

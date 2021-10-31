@@ -59,7 +59,6 @@ const Header = ({ setOpenLoginModal, setOpenJoinModal, leftMenuToggle, rightMenu
         nickname: searchNickname
       } })
       .then((response) => {
-        console.log(response.data);
         if (response.data.length === 0) {
           setSearchUserList([{ nickname: '결과 없음' }]);
         } else {

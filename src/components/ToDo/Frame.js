@@ -19,8 +19,6 @@ const Frame = () => {
     setList(newList);
     setId(id+1);
     setInputValue('');
-
-    console.log(list)
   }
 
   const renderingList = list.map((item) => 

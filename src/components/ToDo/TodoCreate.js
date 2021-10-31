@@ -37,7 +37,6 @@ const TodoCreate = ({ list, setList, today , Cal_on}) => {
             regdt: today,
         });
         setList(newArr);
-        console.log(newArr);
     };
 
     useEffect(() => {
@@ -49,7 +48,6 @@ const TodoCreate = ({ list, setList, today , Cal_on}) => {
             },
         })
             .then((response) => {
-                console.log("Todo 추가/삭제");
             })
             .catch((err) => {
                 console.error("에러 : " + err);

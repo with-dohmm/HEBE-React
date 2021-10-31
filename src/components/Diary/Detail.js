@@ -61,7 +61,6 @@ const Detail = (props) => {
       iuser: loginUserInfo.iuser
     } })
     .then((response) => {
-      console.log('결과 : ' + response);  // 1: 성공 0: 실패
     })
     .catch((error) => {
       console.log(error);
@@ -92,7 +91,6 @@ const Detail = (props) => {
         comment: comment
       } })
       .then((response) => {
-        console.log(response); // 1: 성공 0: 실패
         cmtTextarea.current.value = '';
         resolve('/api/cmt/write done');
       })
@@ -113,7 +111,6 @@ const Detail = (props) => {
         iuser: loginUserInfo.iuser
       } })
       .then((response) => {
-        console.log(response); // 1: 성공 0: 실패
         resolve('/api/cmt/delete done');
       })
       .catch((error) => {
@@ -134,7 +131,6 @@ const Detail = (props) => {
         comment: comment
       } })
       .then((response) => {
-        console.log(response);
         resolve('/api/cmt/update done');
         setCmtToggle(0);
       })

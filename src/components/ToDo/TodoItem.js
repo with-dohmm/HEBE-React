@@ -23,7 +23,6 @@ const TodoItem = ({ list, setList, index, item, today }) => {
             let newArr = [...list];
             newArr[index].done = item.done;
             setList(newArr);
-            console.log(`${item.t_board} done : ` + item.done);
         } else {
             setToggle1(true);
             setToggle2(false);
@@ -31,7 +30,6 @@ const TodoItem = ({ list, setList, index, item, today }) => {
             let newArr = [...list];
             newArr[index].done = item.done;
             setList(newArr);
-            console.log(`${item.t_board} done : ` + item.done);
         }
     };
 
@@ -66,12 +64,10 @@ const TodoItem = ({ list, setList, index, item, today }) => {
             },
         })
             .then((response) => {
-                console.log(response);
             })
             .catch((err) => {
                 console.error("에러 : " + err);
             });
-        console.log(newArr);
     };
 
     const remove = () => {

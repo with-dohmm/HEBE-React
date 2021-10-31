@@ -33,7 +33,6 @@ const Template = () => {
             day = "0" + day;
         }
         setToday(`${Year}-${Month}-${day}`);
-        console.log("setInterval 작동");
         axios({
             url: "/api/todo",
             method: "post",
@@ -43,7 +42,6 @@ const Template = () => {
         })
             .then((response) => {
                 setList(response.data);
-                console.log(response.data);
             })
             .catch((err) => {
                 console.error("에러 : " + err);
@@ -75,7 +73,6 @@ const Template = () => {
         axios
             .get(`/api/todo?regdt=${cYear}-${cMonth}-${cDay}`)
             .then((response) => {
-                console.log(response.data);
             })
             .catch((err) => {
                 console.log(err);
@@ -97,12 +94,10 @@ const Template = () => {
         }
 
         setToday(`${cYear}-${cMonth}-${cDay}`);
-        console.log(`${cYear}-${cMonth}-${cDay}`);
 
         axios
             .get(`/api/todo?regdt=${cYear}-${cMonth}-${cDay}`)
             .then((response) => {
-                console.log(response.data);
             })
             .catch((err) => {
                 console.log(err);

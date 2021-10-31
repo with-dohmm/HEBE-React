@@ -26,7 +26,6 @@ const TodoCalendar = ({ today, setToday , Cal_on }) => {
 
     const apiCalendar = (param) => {
         nowMonth.current = nowMonth.current + param;
-        console.log(nowMonth.current);
 
         axios
             .post("api/todo/regdt", null, {
@@ -39,7 +38,6 @@ const TodoCalendar = ({ today, setToday , Cal_on }) => {
                     (item, index) => Object.values(item)[0]
                 );
                 setDayArr(tempArr);
-                console.log(tempArr);
             })
             .catch((err) => {
                 console.log(err);
@@ -88,7 +86,6 @@ const TodoCalendar = ({ today, setToday , Cal_on }) => {
                                                     to_day.format("YYYY-MM-") +
                                                         days.format("DD")
                                                 );
-                                                console.log(today);
                                             }}
                                         >
                                             {days.format("D")}
@@ -127,7 +124,6 @@ const TodoCalendar = ({ today, setToday , Cal_on }) => {
                                                     to_day.format("YYYY-MM-") +
                                                         days.format("DD")
                                                 );
-                                                console.log(today);
                                             }}
                                         >
                                             {days.format("D")}
@@ -157,7 +153,6 @@ const TodoCalendar = ({ today, setToday , Cal_on }) => {
                 <img
                     src={`img/calendarImg/${nowMonth.current}.jpg`}
                     onClick={() => {
-                        console.log(nowMonth.current);
                     }}
                 />
                 <i className="close fas fa-times fa-2x" onClick={Cal_on}></i>

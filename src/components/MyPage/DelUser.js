@@ -13,9 +13,8 @@ const DelUser = ({loginUserInfo}) => {
                     alert('비밀번호를 다시 입력해 주세요');
                 } else {
                     window.localStorage.clear();
-                    window.location.href='/';
+                    window.location.reload();
                 }
-                
             })
             .catch( (e) => { 
                 console.log(e) 

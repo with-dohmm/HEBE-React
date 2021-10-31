@@ -27,7 +27,6 @@ const Diary = (props) => {
     if (nomarlOrCard === 0) {
        axios.post('/api/diary/paging', null, { params: { iuser: iuser, offsetNum: (8 * (currentPage - 1)) } })
       .then((response) => {
-        console.log(response.data);
         setData(response.data);
       })
       .catch((error) => {
@@ -41,7 +40,6 @@ const Diary = (props) => {
     // length 가져오기
     axios.post('/api/diary', null, { params: { iuser: iuser } })
     .then((response) => {
-      console.log(response.data);
       setAllDataLength(response.data.length);
     })
     .catch((error) => {
